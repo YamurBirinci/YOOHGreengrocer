@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #C4CBC0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customer">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane layoutX="380.0" layoutY="170.0" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <HBox prefHeight="72.0" prefWidth="960.0" spacing="20.0" style="-fx-background-color: F1F1F1;" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="63.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" translateY="5.0">
+                           <image>
+                              <Image url="@../img/yooh_logo2.png" />
+                           </image>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </ImageView>
+                        <Label text="made by G9" translateX="30.0" translateY="30.0">
+                           <font>
+                              <Font name="Ebrima" size="12.0" />
+                           </font>
+                        </Label>
+                        <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="35.0" prefWidth="4.0" translateX="35.0" translateY="20.0" />
+                        <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="39.0" prefWidth="285.0" translateX="40.0" translateY="20.0">
+                           <children>
+                              <TextField fx:id="search" prefHeight="35.0" prefWidth="268.0" promptText="Search" style="-fx-background-radius: 45;">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="72.0" prefWidth="215.0" translateX="15.0">
+                           <children>
+                              <ImageView fitHeight="24.0" fitWidth="19.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/search.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="53.0" fitWidth="76.0" layoutX="161.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/card.png" />
+                                 </image>
+                              </ImageView>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="43.0" prefHeight="20.0" prefWidth="20.0" style="-fx-background-color: #D0D6CE; -fx-border-color: black; -fx-border-radius: 90; -fx-background-radius: 90;" text="0" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="button_cart" layoutX="164.0" layoutY="13.0" mnemonicParsing="false" onAction="#to_cart" prefHeight="56.0" prefWidth="52.0" style="-fx-background-color: transparent;" />
+                              <Button fx:id="search_button" layoutX="-3.0" layoutY="23.0" mnemonicParsing="false" onAction="#to_search" prefHeight="35.0" prefWidth="26.0" style="-fx-background-color: transparent;" />
+                           </children></Pane>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="72.0" prefWidth="204.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="customer_username" text="Yağmur Fatma Birinci">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </top>
+               <left>
+                  <VBox prefHeight="468.0" prefWidth="203.0" style="-fx-background-color: F1F1F1;" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox prefHeight="140.0" prefWidth="203.0">
+                           <children>
+                              <Label text="Categories" translateX="15.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="20.0" />
+                                 </padding>
+                              </Label>
+                              <HBox fx:id="Fruits" prefHeight="42.0" prefWidth="203.0" translateY="5.0">
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="20.0" translateY="5.0">
+                                       <image>
+                                          <Image url="@../img/fruits_icon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="button_fruits" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#to_fruits" prefHeight="38.0" prefWidth="168.0" style="-fx-background-color: transparent;" text="     Fruits">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="Vegetables" prefHeight="42.0" prefWidth="203.0" styleClass="mouse-moved" translateY="10.0">
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="20.0" translateY="5.0">
+                                       <image>
+                                          <Image url="@../img/vegetables_icon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="button_vegetables" mnemonicParsing="false" onAction="#to_vegetables" prefHeight="35.0" prefWidth="152.0" style="-fx-background-color: transparent;" text="Vegetables    " translateX="3.0" translateY="3.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Separator prefWidth="200.0">
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </Separator>
+                        <VBox prefHeight="140.0" prefWidth="203.0">
+                           <children>
+                              <Label text="My Account" translateX="15.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <HBox fx:id="MyProfile" prefHeight="42.0" prefWidth="203.0" styleClass="mouse-moved" translateY="5.0">
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="20.0" translateY="5.0">
+                                       <image>
+                                          <Image url="@../img/profile_icon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="button_profile" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#to_profile" prefHeight="41.0" prefWidth="163.0" style="-fx-background-color: transparent;" text="     My Profile">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox fx:id="MyOrders" prefHeight="42.0" prefWidth="203.0" styleClass="mouse-moved" translateY="10.0">
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" translateX="20.0" translateY="5.0">
+                                       <image>
+                                          <Image url="@../img/history_icon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="152.0" style="-fx-background-color: transparent;" text="My Orders     " translateX="3.0" translateY="3.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Separator prefWidth="200.0" />
+                        <VBox prefHeight="42.0" prefWidth="203.0">
+                           <children>
+                              <HBox prefHeight="42.0" prefWidth="203.0" translateY="5.0">
+                                 <children>
+                                    <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="23.0" translateY="5.0">
+                                       <image>
+                                          <Image url="@../img/logout_icon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button mnemonicParsing="false" prefHeight="22.0" prefWidth="152.0" style="-fx-background-color: transparent;" text="Log out       ">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <styleClass>
+                              <String fx:value="mouse-moved" />
+                              <String fx:value="selected" />
+                           </styleClass>
+                        </VBox>
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="109.0" prefWidth="203.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="profil_panel" layoutX="88.0" layoutY="134.0" prefHeight="468.0" prefWidth="757.0" style="-fx-background-color: C4CBC0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="402.0" layoutY="13.0" prefHeight="443.0" prefWidth="316.0" style="-fx-border-color: #B1B8AD; -fx-border-image-width: 100; -fx-background-color: #DDE1DB; -fx-border-radius: 20; -fx-background-radius: 20;">
+                                 <children>
+                                    <Text fill="#283d1d" layoutX="97.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password Update">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="66.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your password">
+                                       <font>
+                                          <Font name="Ebrima" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="66.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your new password">
+                                       <font>
+                                          <Font name="Ebrima" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="59.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your password must be at least 6 characters">
+                                       <font>
+                                          <Font name="Calibri Italic" size="11.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="81.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="and at most 20 characters, contain">
+                                       <font>
+                                          <Font name="Calibri Italic" size="11.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="114.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="letters and numbers.">
+                                       <font>
+                                          <Font name="Calibri Italic" size="11.0" />
+                                       </font>
+                                    </Text>
+                                    <Button fx:id="update2_button" layoutX="112.0" layoutY="399.0" mnemonicParsing="false" onAction="#update_password" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 7; -fx-background-color: #9DA896;" text="Update">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <effect>
+                                          <Glow />
+                                       </effect>
+                                    </Button>
+                                    <Label fx:id="warning2" layoutX="78.0" layoutY="376.0" />
+                                    <PasswordField fx:id="current_password" layoutX="59.0" layoutY="115.0" prefHeight="30.0" prefWidth="200.0" promptText="Enter your password" style="-fx-background-radius: 8;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </PasswordField>
+                                    <PasswordField fx:id="password1" layoutX="58.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0" promptText="Enter your new password" style="-fx-background-radius: 8;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </PasswordField>
+                                    <PasswordField fx:id="password2" layoutX="58.0" layoutY="234.0" prefHeight="30.0" prefWidth="200.0" promptText="Confirm your password" style="-fx-background-radius: 8;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </PasswordField>
+                                 </children>
+                                 <effect>
+                                    <DropShadow>
+                                       <color>
+                                          <Color red="0.6710526347160339" green="0.6617324352264404" blue="0.6617324352264404" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </AnchorPane>
+                              <AnchorPane layoutX="39.0" layoutY="11.0" prefHeight="447.0" prefWidth="316.0" style="-fx-border-color: #B1B8AD; -fx-background-color: #DDE1DB; -fx-border-image-width: 100; -fx-border-radius: 20; -fx-background-radius: 20;">
+                                 <children>
+                                    <Text fill="#283d1d" layoutX="76.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Acount Information">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="user_name" layoutX="58.0" layoutY="86.0" prefHeight="30.0" prefWidth="200.0" promptText="Your name" style="-fx-background-radius: 8;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="user_surname" layoutX="58.0" layoutY="119.0" prefHeight="30.0" prefWidth="200.0" promptText="Your surname" style="-fx-background-radius: 8;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField disable="true" layoutX="58.0" layoutY="184.0" prefHeight="30.0" prefWidth="46.0" style="-fx-background-radius: 8;" text="+90">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="user_phone" layoutX="108.0" layoutY="185.0" prefHeight="30.0" prefWidth="150.0" promptText="5**" style="-fx-background-radius: 8;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Text layoutX="65.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name Surname">
+                                       <font>
+                                          <Font name="Ebrima" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="65.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number">
+                                       <font>
+                                          <Font name="Ebrima" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="user_username" depthTest="DISABLE" layoutX="58.0" layoutY="250.0" prefHeight="30.0" prefWidth="200.0" promptText="Your username" style="-fx-background-radius: 8;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Text layoutX="66.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                                       <font>
+                                          <Font name="Ebrima" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="66.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+                                       <font>
+                                          <Font name="Ebrima" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <Button fx:id="update1_button" layoutX="108.0" layoutY="403.0" mnemonicParsing="false" onAction="#update_info" prefHeight="30.0" prefWidth="100.0" style="-fx-background-radius: 7; -fx-background-color: #9DA896;" text="Update">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <effect>
+                                          <Glow />
+                                       </effect>
+                                    </Button>
+                                    <Label fx:id="warning1" layoutX="58.0" layoutY="379.0" />
+                                    <TextArea fx:id="address" layoutX="58.0" layoutY="315.0" prefHeight="30.0" prefWidth="200.0" promptText="Your address" style="-fx-background-radius: 8;" wrapText="true">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextArea>
+                                 </children>
+                                 <effect>
+                                    <DropShadow radius="8.535" width="15.14">
+                                       <color>
+                                          <Color red="0.7236841917037964" green="0.7002314925193787" blue="0.7002314925193787" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="products_panel" prefHeight="468.0" prefWidth="757.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ScrollPane layoutX="28.0" layoutY="14.0" prefHeight="468.0" prefWidth="757.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <content>
+                                    <VBox fx:id="fruitsAndVeg" prefHeight="663.0" prefWidth="741.0" style="-fx-background-color: C4CBC0;">
+                                       <padding>
+                                          <Insets bottom="20.0" top="20.0" />
+                                       </padding></VBox>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="cart_panel" layoutX="58.0" layoutY="77.0" prefHeight="468.0" prefWidth="757.0" style="-fx-background-color: C4CBC0;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="cart_product" layoutX="14.0" layoutY="14.0" prefHeight="438.0" prefWidth="494.0" style="-fx-border-color: #B1B8AD; -fx-background-radius: 7; -fx-border-radius: 7;">
+                                 <children>
+                                    <ScrollPane layoutX="26.0" layoutY="25.0" prefHeight="438.0" prefWidth="494.0" style="-fx-background-radius: 7;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <content>
+                                          <VBox fx:id="product_panel" prefHeight="600.0" prefWidth="477.0" style="-fx-background-color: #DDE1DB; -fx-background-radius: 2;" />
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="519.0" layoutY="151.0" prefHeight="172.0" prefWidth="224.0" style="-fx-border-color: #B1B8AD; -fx-background-color: #DDE1DB; -fx-background-radius: 7; -fx-border-radius: 7;">
+                                 <children>
+                                    <Label layoutX="40.0" layoutY="13.0" text="Order Summary" textFill="#1f281b">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="41.0" layoutY="55.0" text="Product Total:" textFill="#1f281b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="95.0" layoutY="79.0" text="KDV:" textFill="#1f281b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="50.0" layoutY="103.0" text="Cargo Total:" textFill="#1f281b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Separator layoutX="12.0" layoutY="132.0" prefWidth="200.0" style="-fx-background-color: #B1B8AD;" />
+                                    <Label layoutX="90.0" layoutY="142.0" text="Total:" textFill="#1f281b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="519.0" layoutY="14.0" prefHeight="129.0" prefWidth="225.0" style="-fx-border-color: #B1B8AD; -fx-background-color: #DDE1DB; -fx-background-radius: 7; -fx-border-radius: 7;">
+                                 <children>
+                                    <Label layoutX="42.0" layoutY="36.0" text="Estimated Delivery" textFill="#1f281b">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox layoutX="38.0" layoutY="65.0" prefWidth="150.0" promptText="Enter Time" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="519.0" layoutY="332.0" prefHeight="119.0" prefWidth="225.0" style="-fx-border-color: #B1B8AD; -fx-background-color: #DDE1DB; -fx-background-radius: 7; -fx-border-radius: 7;">
+                                 <children>
+                                    <Button layoutX="14.0" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="197.0" style="-fx-background-radius: 7;" text="CONFIRM CART &gt;">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
