@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" styleClass="white-background" stylesheets="@../css/styleSheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="customer_homepage">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane layoutX="380.0" layoutY="170.0" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <HBox prefHeight="72.0" prefWidth="960.0" spacing="20.0" style="-fx-background-color: F1F1F1;" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="63.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" translateY="5.0">
+                           <image>
+                              <Image url="@../img/yooh_logo2.png" />
+                           </image>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </ImageView>
+                        <Label text="made by G9" translateX="30.0" translateY="30.0">
+                           <font>
+                              <Font name="Ebrima" size="12.0" />
+                           </font>
+                        </Label>
+                        <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="35.0" prefWidth="4.0" translateX="35.0" translateY="20.0" />
+                        <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="39.0" prefWidth="285.0" translateX="40.0" translateY="20.0" />
+                        <Pane prefHeight="72.0" prefWidth="215.0" translateX="15.0" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="72.0" prefWidth="204.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="customer_username" text="Yağmur Fatma Birinci">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </top>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="278.0" fitWidth="334.0" layoutX="341.0" layoutY="-60.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/heading.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="255.0" fitWidth="266.0" layoutX="203.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/fruits_homepage.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="263.0" fitWidth="264.0" layoutX="501.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/vegetables_homepage.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="fruits_button" layoutX="219.0" layoutY="160.0" mnemonicParsing="false" onAction="#to_fruits" prefHeight="203.0" prefWidth="221.0" style="-fx-background-color: transparent;">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="vegetables_button" layoutX="522.0" layoutY="160.0" mnemonicParsing="false" onAction="#to_vegetables" prefHeight="203.0" prefWidth="221.0" style="-fx-background-color: transparent;">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="399.0" layoutY="412.0" text="Click on the hearts to discover!" textFill="#26432a" />
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
