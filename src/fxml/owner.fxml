@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #C4CBC0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customer">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane layoutX="380.0" layoutY="170.0" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <HBox prefHeight="72.0" prefWidth="960.0" spacing="20.0" style="-fx-background-color: F1F1F1;" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="63.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" translateY="5.0">
+                           <image>
+                              <Image url="@../img/yooh_logo2.png" />
+                           </image>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </ImageView>
+                        <Label text="made by G9" translateX="30.0" translateY="30.0">
+                           <font>
+                              <Font name="Ebrima" size="12.0" />
+                           </font>
+                        </Label>
+                        <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="35.0" prefWidth="4.0" translateX="35.0" translateY="20.0" />
+                        <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="39.0" prefWidth="285.0" translateX="40.0" translateY="20.0" />
+                        <Pane prefHeight="72.0" prefWidth="215.0" translateX="15.0">
+                           <children>
+                              <Button fx:id="search_button" layoutX="46.0" layoutY="35.0" mnemonicParsing="false" onAction="#to_search" prefHeight="35.0" prefWidth="26.0" style="-fx-background-color: transparent;" />
+                           </children></Pane>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="72.0" prefWidth="204.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="owner_username" text="Owner 1">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </top>
+               <left>
+                  <VBox prefHeight="468.0" prefWidth="203.0" style="-fx-background-color: F1F1F1;" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox prefHeight="277.0" prefWidth="203.0">
+                           <children>
+                              <HBox prefHeight="60.0" prefWidth="203.0" />
+                              <Button fx:id="productManagementButton" mnemonicParsing="false" prefHeight="73.0" prefWidth="203.0" text="Product Management System" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="carrierManagementButton" mnemonicParsing="false" prefHeight="73.0" prefWidth="203.0" text="Carrier Management System" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="inventoryButton" mnemonicParsing="false" prefHeight="72.0" prefWidth="203.0" text="Inventory">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="statisticsButton" mnemonicParsing="false" prefHeight="67.0" prefWidth="203.0" text="Statistics">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="93.0" prefWidth="203.0" VBox.vgrow="ALWAYS" />
+                        <HBox prefHeight="42.0" prefWidth="203.0">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="23.0" translateY="5.0">
+                                 <image>
+                                    <Image url="@../img/logout_icon.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="logOutButton" mnemonicParsing="false" prefHeight="22.0" prefWidth="152.0" style="-fx-background-color: transparent;" text="Log out       ">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </left>
+               <center>
+                  <AnchorPane BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="productManagementPage" layoutY="18.0" prefHeight="490.0" prefWidth="766.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="18.0">
+                           <children>
+                              <AnchorPane layoutX="7.0" layoutY="15.0" prefHeight="227.0" prefWidth="741.0" AnchorPane.bottomAnchor="226.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="15.0">
+                                 <children>
+                                    <TableView fx:id="prodManagementTable" prefHeight="227.0" prefWidth="741.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+                                      <columns>
+                                        <TableColumn fx:id="prodManagTabIDcol" prefWidth="100.0" text="Product ID" />
+                                        <TableColumn fx:id="prodManagTabNameCol" prefWidth="100.0" text="Product Name" />
+                                          <TableColumn fx:id="prodManagTabTypeCol" prefWidth="100.0" text="Type" />
+                                          <TableColumn fx:id="prodManagTabStockCol" prefWidth="100.0" text="Stock" />
+                                          <TableColumn fx:id="prodManagTabPriceCol" prefWidth="100.0" text="Price" />
+                                          <TableColumn fx:id="prodManagTabStatCol" prefWidth="100.0" text="Status" />
+                                          <TableColumn fx:id="prodManagTabDateCol" prefWidth="100.0" text="Date" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutY="255.0" prefHeight="204.0" prefWidth="738.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="255.0">
+                                 <children>
+                                    <Label layoutX="23.0" layoutY="8.0" prefHeight="27.0" prefWidth="95.0" text="Product ID:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="109.0" layoutY="12.0" />
+                                    <Label layoutX="22.0" layoutY="49.0" prefHeight="27.0" prefWidth="109.0" text="Product Name:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="135.0" layoutY="52.0" />
+                                    <Label layoutX="24.0" layoutY="91.0" prefHeight="27.0" prefWidth="95.0" text="Type:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox layoutX="71.0" layoutY="93.0" prefWidth="150.0" promptText="Choose Type.." />
+                                    <TextField layoutX="394.0" layoutY="13.0" />
+                                    <Label layoutX="341.0" layoutY="10.0" prefHeight="27.0" prefWidth="95.0" text="Stock:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="341.0" layoutY="48.0" prefHeight="27.0" prefWidth="95.0" text="Price(TL):">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="418.0" layoutY="51.0" />
+                                    <AnchorPane layoutX="608.0" layoutY="7.0" prefHeight="118.0" prefWidth="122.0">
+                                       <children>
+                                          <AnchorPane layoutX="-3.0" prefHeight="131.0" prefWidth="125.0">
+                                             <children>
+                                                <ImageView fx:id="prodImgView" fitHeight="131.0" fitWidth="125.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <Button fx:id="prodImpotBtn" layoutX="619.0" layoutY="148.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="Import" />
+                                    <Button fx:id="prodAddBtn" layoutX="37.0" layoutY="143.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Add" AnchorPane.bottomAnchor="21.0" />
+                                    <Button fx:id="prodUpdtBtn" layoutX="172.0" layoutY="143.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Update" AnchorPane.bottomAnchor="21.0" />
+                                    <Button fx:id="prodClrBtn" layoutX="331.0" layoutY="143.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Clear" AnchorPane.bottomAnchor="21.0" />
+                                    <Button fx:id="prodDltBtn" layoutX="462.0" layoutY="143.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Delete" AnchorPane.bottomAnchor="21.0" />
+                                    <Label layoutX="341.0" layoutY="87.0" prefHeight="27.0" prefWidth="95.0" text="Status:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox layoutX="398.0" layoutY="90.0" prefWidth="150.0" promptText="Choose Type.." />
+                                 </children>
+                              </AnchorPane>
+                              <Separator layoutY="246.0" prefHeight="2.0" prefWidth="751.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="carrierManagementPage" prefHeight="468.0" prefWidth="757.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane prefHeight="204.0" prefWidth="738.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                                 <children>
+                                    <Label layoutX="23.0" layoutY="8.0" prefHeight="27.0" prefWidth="95.0" text="Carrier ID:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="109.0" layoutY="12.0" />
+                                    <Label layoutX="22.0" layoutY="49.0" prefHeight="27.0" prefWidth="109.0" text="Carrier Name:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField layoutX="135.0" layoutY="52.0" />
+                                    <Label layoutX="341.0" layoutY="10.0" prefHeight="27.0" prefWidth="95.0" text="Starting Date: ">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane layoutX="608.0" layoutY="7.0" prefHeight="118.0" prefWidth="122.0" />
+                                    <Button fx:id="prodAddBtn1" layoutX="68.0" layoutY="116.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Add" AnchorPane.bottomAnchor="48.0" />
+                                    <Button fx:id="prodUpdtBtn1" layoutX="203.0" layoutY="116.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Update" AnchorPane.bottomAnchor="48.0" />
+                                    <Button fx:id="prodClrBtn1" layoutX="362.0" layoutY="116.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Clear" AnchorPane.bottomAnchor="48.0" />
+                                    <Button fx:id="prodDltBtn1" layoutX="493.0" layoutY="116.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Delete" AnchorPane.bottomAnchor="48.0" />
+                                    <Label layoutX="341.0" layoutY="47.0" prefHeight="27.0" prefWidth="95.0" text="Status:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox layoutX="402.0" layoutY="50.0" prefWidth="150.0" promptText="Choose Type.." />
+                                    <TextField layoutX="447.0" layoutY="12.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="753.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+                                 <children>
+                                    <TableView prefHeight="200.0" prefWidth="726.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+                                      <columns>
+                                        <TableColumn prefWidth="100.0" text="Carrier ID" />
+                                        <TableColumn prefWidth="100.0" text="Carrier Name" />
+                                          <TableColumn prefWidth="100.0" text="Starting Date" />
+                                          <TableColumn prefWidth="100.0" text="Total Carries" />
+                                          <TableColumn prefWidth="100.0" text="Status" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="inventoryPage" prefHeight="468.0" prefWidth="760.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <TableView fx:id="prodManagementTable1" prefHeight="446.0" prefWidth="730.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+                                 <columns>
+                                    <TableColumn fx:id="prodManagTabIDcol1" prefWidth="100.0" text="Product ID" />
+                                    <TableColumn fx:id="prodManagTabNameCol1" prefWidth="100.0" text="Product Name" />
+                                    <TableColumn fx:id="prodManagTabTypeCol1" prefWidth="100.0" text="Type" />
+                                    <TableColumn fx:id="prodManagTabStockCol1" prefWidth="100.0" text="Stock" />
+                                    <TableColumn fx:id="prodManagTabPriceCol1" prefWidth="100.0" text="Price" />
+                                    <TableColumn fx:id="prodManagTabStatCol1" prefWidth="100.0" text="Status" />
+                                    <TableColumn fx:id="prodManagTabDateCol1" prefWidth="100.0" text="Date" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="468.0" prefWidth="760.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="35.0" layoutY="147.0" prefHeight="341.0" prefWidth="303.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="147.0">
+                                 <children>
+                                    <Label layoutX="7.0" layoutY="2.0" prefHeight="32.0" prefWidth="288.0" text="              Monthly Grocery Visitors" textAlignment="JUSTIFY" textFill="#070707" AnchorPane.topAnchor="2.0">
+                                       <font>
+                                          <Font name="System Bold Italic" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <AreaChart layoutX="3.0" layoutY="39.0" prefHeight="297.0" prefWidth="303.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="39.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </AreaChart>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="398.0" layoutY="147.0" prefHeight="341.0" prefWidth="303.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="147.0">
+                                 <children>
+                                    <Label layoutX="7.0" prefHeight="0.0" prefWidth="288.0" text="                      Monthly Income " textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold Italic" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <AreaChart layoutX="-8.0" layoutY="36.0" prefHeight="297.0" prefWidth="303.0">
+                                       <xAxis>
+                                          <CategoryAxis side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis side="LEFT" />
+                                       </yAxis>
+                                    </AreaChart>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="35.0" layoutY="23.0" prefHeight="103.0" prefWidth="206.0" AnchorPane.bottomAnchor="380.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="525.0" AnchorPane.topAnchor="10.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="60.0" prefHeight="58.0" prefWidth="136.0" text="Number Of Customer" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                       <effect>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant>
+                                                   <color>
+                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
+                                                   </color>
+                                                </Light.Distant>
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="59.0" fitWidth="58.0" layoutX="-4.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="60.0">
+                                       <image>
+                                          <Image url="@../../../Desktop/customer.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER_RIGHT" layoutX="36.0" layoutY="1.0" prefHeight="38.0" prefWidth="170.0" text="0" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                       <effect>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant>
+                                                   <color>
+                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
+                                                   </color>
+                                                </Light.Distant>
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="279.0" layoutY="10.0" prefHeight="113.0" prefWidth="200.0" AnchorPane.topAnchor="10.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" layoutX="72.0" layoutY="59.0" prefHeight="59.0" prefWidth="134.0" text="Today's Income" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                       <effect>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant>
+                                                   <color>
+                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
+                                                   </color>
+                                                </Light.Distant>
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="58.0" fitWidth="58.0" layoutX="-4.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Desktop/customer.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER_RIGHT" layoutX="36.0" layoutY="1.0" prefHeight="38.0" prefWidth="170.0" text="0.0 TL" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                       <effect>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant>
+                                                   <color>
+                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
+                                                   </color>
+                                                </Light.Distant>
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="511.0" layoutY="18.0" prefHeight="95.0" prefWidth="206.0" AnchorPane.topAnchor="10.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" layoutX="72.0" layoutY="59.0" prefHeight="52.0" prefWidth="134.0" text="Total Income" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                       <effect>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant>
+                                                   <color>
+                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
+                                                   </color>
+                                                </Light.Distant>
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="51.0" fitWidth="64.0" layoutX="-4.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Desktop/customer.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label alignment="CENTER_RIGHT" layoutX="36.0" layoutY="1.0" prefHeight="38.0" prefWidth="170.0" text="0" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true">
+                                       <cursor>
+                                          <Cursor fx:constant="TEXT" />
+                                       </cursor>
+                                       <effect>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant>
+                                                   <color>
+                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
+                                                   </color>
+                                                </Light.Distant>
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
