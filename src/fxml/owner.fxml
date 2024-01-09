@@ -2,8 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -13,9 +13,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,7 +21,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #C4CBC0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customer">
@@ -117,342 +113,243 @@
                   </VBox>
                </left>
                <center>
-                  <AnchorPane BorderPane.alignment="CENTER">
+                  <AnchorPane prefWidth="725.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="productManagementPage" layoutY="18.0" prefHeight="490.0" prefWidth="766.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="18.0">
+                        <AnchorPane fx:id="productManagementPage" prefHeight="490.0" prefWidth="766.0" visible="false">
                            <children>
-                              <AnchorPane layoutX="7.0" layoutY="15.0" prefHeight="227.0" prefWidth="741.0" AnchorPane.bottomAnchor="226.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="15.0">
+                              <AnchorPane fx:id="prodManagTab" layoutX="7.0" layoutY="15.0" prefHeight="227.0" prefWidth="741.0" AnchorPane.bottomAnchor="226.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="15.0">
                                  <children>
                                     <TableView fx:id="prodManagementTable" prefHeight="227.0" prefWidth="741.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
-                                      <columns>
-                                        <TableColumn fx:id="prodManagTabIDcol" prefWidth="100.0" text="Product ID" />
-                                        <TableColumn fx:id="prodManagTabNameCol" prefWidth="100.0" text="Product Name" />
+                                       <columns>
+                                          <TableColumn fx:id="prodManagTabIDcol" prefWidth="100.0" text="Product ID" />
+                                          <TableColumn fx:id="prodManagTabNameCol" prefWidth="100.0" text="Product Name" />
                                           <TableColumn fx:id="prodManagTabTypeCol" prefWidth="100.0" text="Type" />
                                           <TableColumn fx:id="prodManagTabStockCol" prefWidth="100.0" text="Stock" />
                                           <TableColumn fx:id="prodManagTabPriceCol" prefWidth="100.0" text="Price" />
                                           <TableColumn fx:id="prodManagTabStatCol" prefWidth="100.0" text="Status" />
                                           <TableColumn fx:id="prodManagTabDateCol" prefWidth="100.0" text="Date" />
-                                      </columns>
+                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutY="255.0" prefHeight="204.0" prefWidth="738.0" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="255.0">
+                              <AnchorPane layoutY="270.0" prefHeight="490.0" prefWidth="766.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label layoutX="23.0" layoutY="8.0" prefHeight="27.0" prefWidth="95.0" text="Product ID:">
+                                    <Label layoutX="43.0" layoutY="287.0" prefHeight="27.0" prefWidth="95.0" text="Product ID:">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="109.0" layoutY="12.0" />
-                                    <Label layoutX="22.0" layoutY="49.0" prefHeight="27.0" prefWidth="109.0" text="Product Name:">
+                                    <TextField fx:id="prodIDInput" layoutX="129.0" layoutY="291.0" />
+                                    <Label layoutX="42.0" layoutY="328.0" prefHeight="27.0" prefWidth="109.0" text="Product Name:">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="135.0" layoutY="52.0" />
-                                    <Label layoutX="24.0" layoutY="91.0" prefHeight="27.0" prefWidth="95.0" text="Type:">
+                                    <TextField fx:id="prodNameInput" layoutX="155.0" layoutY="331.0" />
+                                    <Label layoutX="44.0" layoutY="370.0" prefHeight="27.0" prefWidth="95.0" text="Type:">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox layoutX="71.0" layoutY="93.0" prefWidth="150.0" promptText="Choose Type.." />
-                                    <TextField layoutX="394.0" layoutY="13.0" />
-                                    <Label layoutX="341.0" layoutY="10.0" prefHeight="27.0" prefWidth="95.0" text="Stock:">
+                                    <ComboBox fx:id="chooseProdType" layoutX="91.0" layoutY="372.0" prefWidth="150.0" promptText="Choose Type.." />
+                                    <TextField fx:id="prodStockInput" layoutX="378.0" layoutY="294.0" />
+                                    <Label layoutX="325.0" layoutY="291.0" prefHeight="27.0" prefWidth="95.0" text="Stock:">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="341.0" layoutY="48.0" prefHeight="27.0" prefWidth="95.0" text="Price(TL):">
+                                    <Label layoutX="325.0" layoutY="329.0" prefHeight="27.0" prefWidth="95.0" text="Price(TL):">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="418.0" layoutY="51.0" />
-                                    <AnchorPane layoutX="608.0" layoutY="7.0" prefHeight="118.0" prefWidth="122.0">
+                                    <TextField fx:id="prodPriceInput" layoutX="402.0" layoutY="332.0" />
+                                    <AnchorPane layoutX="592.0" layoutY="288.0" prefHeight="118.0" prefWidth="122.0">
                                        <children>
-                                          <AnchorPane layoutX="-3.0" prefHeight="131.0" prefWidth="125.0">
+                                          <AnchorPane layoutX="-3.0" prefHeight="131.0" prefWidth="125.0" AnchorPane.rightAnchor="0.0">
                                              <children>
-                                                <ImageView fx:id="prodImgView" fitHeight="131.0" fitWidth="125.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" />
+                                                <ImageView fx:id="prodImgView" fitHeight="131.0" fitWidth="125.0" layoutX="-4.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" />
                                              </children>
                                           </AnchorPane>
                                        </children>
                                     </AnchorPane>
-                                    <Button fx:id="prodImpotBtn" layoutX="619.0" layoutY="148.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="Import" />
+                                    <Button fx:id="prodImpotBtn" layoutX="603.0" layoutY="416.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="105.0" text="Import" />
                                     <Button fx:id="prodAddBtn" layoutX="37.0" layoutY="143.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Add" AnchorPane.bottomAnchor="21.0" />
                                     <Button fx:id="prodUpdtBtn" layoutX="172.0" layoutY="143.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Update" AnchorPane.bottomAnchor="21.0" />
                                     <Button fx:id="prodClrBtn" layoutX="331.0" layoutY="143.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Clear" AnchorPane.bottomAnchor="21.0" />
                                     <Button fx:id="prodDltBtn" layoutX="462.0" layoutY="143.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Delete" AnchorPane.bottomAnchor="21.0" />
-                                    <Label layoutX="341.0" layoutY="87.0" prefHeight="27.0" prefWidth="95.0" text="Status:">
+                                    <Label layoutX="325.0" layoutY="368.0" prefHeight="27.0" prefWidth="95.0" text="Status:">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox layoutX="398.0" layoutY="90.0" prefWidth="150.0" promptText="Choose Type.." />
+                                    <ComboBox fx:id="chooseProdStat" layoutX="382.0" layoutY="371.0" prefWidth="150.0" promptText="Choose Type.." />
                                  </children>
                               </AnchorPane>
-                              <Separator layoutY="246.0" prefHeight="2.0" prefWidth="751.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="carrierManagementPage" prefHeight="468.0" prefWidth="757.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="carrierManagementPage" layoutX="10.0" layoutY="10.0" prefHeight="543.0" prefWidth="783.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane prefHeight="204.0" prefWidth="738.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                              <AnchorPane prefHeight="523.0" prefWidth="502.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="276.0" AnchorPane.topAnchor="10.0">
                                  <children>
-                                    <Label layoutX="23.0" layoutY="8.0" prefHeight="27.0" prefWidth="95.0" text="Carrier ID:">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField layoutX="109.0" layoutY="12.0" />
-                                    <Label layoutX="22.0" layoutY="49.0" prefHeight="27.0" prefWidth="109.0" text="Carrier Name:">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField layoutX="135.0" layoutY="52.0" />
-                                    <Label layoutX="341.0" layoutY="10.0" prefHeight="27.0" prefWidth="95.0" text="Starting Date: ">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <AnchorPane layoutX="608.0" layoutY="7.0" prefHeight="118.0" prefWidth="122.0" />
-                                    <Button fx:id="prodAddBtn1" layoutX="68.0" layoutY="116.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Add" AnchorPane.bottomAnchor="48.0" />
-                                    <Button fx:id="prodUpdtBtn1" layoutX="203.0" layoutY="116.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Update" AnchorPane.bottomAnchor="48.0" />
-                                    <Button fx:id="prodClrBtn1" layoutX="362.0" layoutY="116.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Clear" AnchorPane.bottomAnchor="48.0" />
-                                    <Button fx:id="prodDltBtn1" layoutX="493.0" layoutY="116.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Delete" AnchorPane.bottomAnchor="48.0" />
-                                    <Label layoutX="341.0" layoutY="47.0" prefHeight="27.0" prefWidth="95.0" text="Status:">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <ComboBox layoutX="402.0" layoutY="50.0" prefWidth="150.0" promptText="Choose Type.." />
-                                    <TextField layoutX="447.0" layoutY="12.0" />
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="753.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
-                                 <children>
-                                    <TableView prefHeight="200.0" prefWidth="726.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
-                                      <columns>
-                                        <TableColumn prefWidth="100.0" text="Carrier ID" />
-                                        <TableColumn prefWidth="100.0" text="Carrier Name" />
-                                          <TableColumn prefWidth="100.0" text="Starting Date" />
-                                          <TableColumn prefWidth="100.0" text="Total Carries" />
-                                          <TableColumn prefWidth="100.0" text="Status" />
-                                      </columns>
+                                    <TableView fx:id="carrierManagTab" prefHeight="200.0" prefWidth="274.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn fx:id="carrierManagTabIDcol" prefWidth="100.0" text="Carrier ID" />
+                                          <TableColumn fx:id="carrierManagTabNameCol" prefWidth="100.0" text="Carrier Name" />
+                                          <TableColumn fx:id="carrierManagTabDateCol" prefWidth="100.0" text="Starting Date" />
+                                          <TableColumn fx:id="carrierManagTabTotCarryCol" prefWidth="100.0" text="Total Carries" />
+                                          <TableColumn fx:id="carrierManagTabStatCol" prefWidth="100.0" text="Status" />
+                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
+                              <AnchorPane layoutX="515.0" layoutY="-3.0" prefHeight="543.0" prefWidth="268.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="515.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+                                 <children>
+                                    <Label layoutX="7.0" layoutY="14.0" prefHeight="27.0" prefWidth="95.0" text="Carrier ID:" AnchorPane.leftAnchor="7.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="carrierIDInput" layoutX="101.0" layoutY="14.0" />
+                                    <Label layoutX="6.0" layoutY="46.0" prefHeight="27.0" prefWidth="109.0" text="Carrier Name:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="carrierNameInput" layoutX="101.0" layoutY="47.0" />
+                                    <Label layoutX="6.0" layoutY="84.0" prefHeight="27.0" prefWidth="95.0" text="Starting Date: ">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="carrierAddBtn" layoutX="140.0" layoutY="346.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Add" />
+                                    <Button fx:id="carrierUpdtBtn" layoutX="12.0" layoutY="346.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Update" />
+                                    <Button fx:id="carrierClrBtn" layoutX="140.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Clear" />
+                                    <Button fx:id="carrierDltBtn" layoutX="12.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Delete" />
+                                    <Label layoutX="8.0" layoutY="156.0" prefHeight="27.0" prefWidth="95.0" text="Status:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="chooseCarrierStat" layoutX="105.0" layoutY="155.0" prefWidth="150.0" promptText="Choose Type.." />
+                                    <TextField fx:id="carrierStartDateInput" layoutX="102.0" layoutY="85.0" />
+                                    <Label layoutX="7.0" layoutY="119.0" prefHeight="27.0" prefWidth="95.0" text="Total Carries:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="carrierTotCarriesInput" layoutX="102.0" layoutY="120.0" />
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="inventoryPage" prefHeight="468.0" prefWidth="760.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="inventoryPage" layoutX="10.0" layoutY="10.0" prefHeight="468.0" prefWidth="760.0" visible="false">
                            <children>
-                              <TableView fx:id="prodManagementTable1" prefHeight="446.0" prefWidth="730.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+                              <TableView fx:id="incentoryTable" prefHeight="446.0" prefWidth="730.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
                                  <columns>
-                                    <TableColumn fx:id="prodManagTabIDcol1" prefWidth="100.0" text="Product ID" />
-                                    <TableColumn fx:id="prodManagTabNameCol1" prefWidth="100.0" text="Product Name" />
-                                    <TableColumn fx:id="prodManagTabTypeCol1" prefWidth="100.0" text="Type" />
-                                    <TableColumn fx:id="prodManagTabStockCol1" prefWidth="100.0" text="Stock" />
-                                    <TableColumn fx:id="prodManagTabPriceCol1" prefWidth="100.0" text="Price" />
-                                    <TableColumn fx:id="prodManagTabStatCol1" prefWidth="100.0" text="Status" />
-                                    <TableColumn fx:id="prodManagTabDateCol1" prefWidth="100.0" text="Date" />
+                                    <TableColumn fx:id="invntryTabIDcol" prefWidth="100.0" text="Product ID" />
+                                    <TableColumn fx:id="invntryTabNameCol" prefWidth="100.0" text="Product Name" />
+                                    <TableColumn fx:id="invntryTabTypeCol" prefWidth="100.0" text="Type" />
+                                    <TableColumn fx:id="invntryTabStockCol" prefWidth="100.0" text="Stock" />
+                                    <TableColumn fx:id="invntryTabPriceCol" prefWidth="100.0" text="Price" />
+                                    <TableColumn fx:id="invntryTabStatCol" prefWidth="100.0" text="Status" />
+                                    <TableColumn fx:id="invntryTabDateCol" prefWidth="100.0" text="Date" />
                                  </columns>
                               </TableView>
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="468.0" prefWidth="760.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="statisticsPage" layoutX="10.0" layoutY="10.0" prefHeight="490.0" prefWidth="771.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="35.0" layoutY="147.0" prefHeight="341.0" prefWidth="303.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="147.0">
+                              <AnchorPane fx:id="statInfoSection" layoutY="35.0" prefHeight="227.0" prefWidth="773.0" AnchorPane.bottomAnchor="306.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                                  <children>
-                                    <Label layoutX="7.0" layoutY="2.0" prefHeight="32.0" prefWidth="288.0" text="              Monthly Grocery Visitors" textAlignment="JUSTIFY" textFill="#070707" AnchorPane.topAnchor="2.0">
-                                       <font>
-                                          <Font name="System Bold Italic" size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <AreaChart layoutX="3.0" layoutY="39.0" prefHeight="297.0" prefWidth="303.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="39.0">
-                                      <xAxis>
-                                        <CategoryAxis side="BOTTOM" />
-                                      </xAxis>
-                                      <yAxis>
-                                        <NumberAxis side="LEFT" />
-                                      </yAxis>
-                                    </AreaChart>
+                                    <AnchorPane prefHeight="162.0" prefWidth="254.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="519.0" AnchorPane.topAnchor="10.0">
+                                       <children>
+                                          <Label prefHeight="79.0" prefWidth="126.0" text="-Number of Customer" wrapText="true">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="numOfCustomerStat" layoutX="180.0" layoutY="131.0" prefHeight="30.0" prefWidth="74.0" text="0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="85.0" fitWidth="97.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../img/candidate_2107723.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="260.0" prefHeight="162.0" prefWidth="252.0" AnchorPane.bottomAnchor="61.0" AnchorPane.topAnchor="10.0">
+                                       <children>
+                                          <Label prefHeight="59.0" prefWidth="82.0" text="-Total Income" wrapText="true">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="totalIncomeStat" layoutX="181.0" layoutY="128.0" prefHeight="25.0" prefWidth="74.0" text="0.0  TL">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="94.0" fitWidth="92.0" layoutX="-2.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../img/dollar_10308593.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="513.0" prefHeight="162.0" prefWidth="257.0" AnchorPane.bottomAnchor="61.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                       <children>
+                                          <Label prefHeight="62.0" prefWidth="146.0" text="-Number of Sold Products" wrapText="true">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ImageView fitHeight="88.0" fitWidth="135.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../Desktop/product.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Label fx:id="totalIncomeStat" layoutX="188.0" layoutY="125.0" prefHeight="31.0" prefWidth="74.0" text="0 ">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="398.0" layoutY="147.0" prefHeight="341.0" prefWidth="303.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="147.0">
+                              <AnchorPane fx:id="graphSection" layoutX="-7.0" layoutY="200.0" prefHeight="290.0" prefWidth="773.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
                                  <children>
-                                    <Label layoutX="7.0" prefHeight="0.0" prefWidth="288.0" text="                      Monthly Income " textAlignment="CENTER" wrapText="true">
-                                       <font>
-                                          <Font name="System Bold Italic" size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <AreaChart layoutX="-8.0" layoutY="36.0" prefHeight="297.0" prefWidth="303.0">
-                                       <xAxis>
-                                          <CategoryAxis side="BOTTOM" />
-                                       </xAxis>
-                                       <yAxis>
-                                          <NumberAxis side="LEFT" />
-                                       </yAxis>
-                                    </AreaChart>
+                                    <AnchorPane prefHeight="340.0" prefWidth="370.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                       <children>
+                                          <AreaChart fx:id="customProdChartStat" layoutX="-109.0" layoutY="-86.0" prefHeight="323.0" prefWidth="391.0" title="2023 Year Income Chart" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </AreaChart>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="367.0" layoutY="8.0" prefHeight="340.0" prefWidth="370.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="403.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                       <children>
+                                          <BarChart fx:id="yearlyIncomeChartStat" layoutX="-92.0" layoutY="-111.0" prefHeight="323.0" prefWidth="380.0" title="Customer Product Chart" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="35.0" layoutY="23.0" prefHeight="103.0" prefWidth="206.0" AnchorPane.bottomAnchor="380.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="525.0" AnchorPane.topAnchor="10.0">
-                                 <children>
-                                    <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="60.0" prefHeight="58.0" prefWidth="136.0" text="Number Of Customer" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
-                                       <cursor>
-                                          <Cursor fx:constant="TEXT" />
-                                       </cursor>
-                                       <effect>
-                                          <Lighting>
-                                             <bumpInput>
-                                                <Shadow />
-                                             </bumpInput>
-                                             <light>
-                                                <Light.Distant>
-                                                   <color>
-                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
-                                                   </color>
-                                                </Light.Distant>
-                                             </light>
-                                          </Lighting>
-                                       </effect>
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <ImageView fitHeight="59.0" fitWidth="58.0" layoutX="-4.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="60.0">
-                                       <image>
-                                          <Image url="@../../../Desktop/customer.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label alignment="CENTER_RIGHT" layoutX="36.0" layoutY="1.0" prefHeight="38.0" prefWidth="170.0" text="0" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true">
-                                       <cursor>
-                                          <Cursor fx:constant="TEXT" />
-                                       </cursor>
-                                       <effect>
-                                          <Lighting>
-                                             <bumpInput>
-                                                <Shadow />
-                                             </bumpInput>
-                                             <light>
-                                                <Light.Distant>
-                                                   <color>
-                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
-                                                   </color>
-                                                </Light.Distant>
-                                             </light>
-                                          </Lighting>
-                                       </effect>
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane layoutX="279.0" layoutY="10.0" prefHeight="113.0" prefWidth="200.0" AnchorPane.topAnchor="10.0">
-                                 <children>
-                                    <Label alignment="CENTER_RIGHT" layoutX="72.0" layoutY="59.0" prefHeight="59.0" prefWidth="134.0" text="Today's Income" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0">
-                                       <cursor>
-                                          <Cursor fx:constant="TEXT" />
-                                       </cursor>
-                                       <effect>
-                                          <Lighting>
-                                             <bumpInput>
-                                                <Shadow />
-                                             </bumpInput>
-                                             <light>
-                                                <Light.Distant>
-                                                   <color>
-                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
-                                                   </color>
-                                                </Light.Distant>
-                                             </light>
-                                          </Lighting>
-                                       </effect>
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <ImageView fitHeight="58.0" fitWidth="58.0" layoutX="-4.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../Desktop/customer.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label alignment="CENTER_RIGHT" layoutX="36.0" layoutY="1.0" prefHeight="38.0" prefWidth="170.0" text="0.0 TL" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true">
-                                       <cursor>
-                                          <Cursor fx:constant="TEXT" />
-                                       </cursor>
-                                       <effect>
-                                          <Lighting>
-                                             <bumpInput>
-                                                <Shadow />
-                                             </bumpInput>
-                                             <light>
-                                                <Light.Distant>
-                                                   <color>
-                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
-                                                   </color>
-                                                </Light.Distant>
-                                             </light>
-                                          </Lighting>
-                                       </effect>
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane layoutX="511.0" layoutY="18.0" prefHeight="95.0" prefWidth="206.0" AnchorPane.topAnchor="10.0">
-                                 <children>
-                                    <Label alignment="CENTER_RIGHT" layoutX="72.0" layoutY="59.0" prefHeight="52.0" prefWidth="134.0" text="Total Income" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="59.0">
-                                       <cursor>
-                                          <Cursor fx:constant="TEXT" />
-                                       </cursor>
-                                       <effect>
-                                          <Lighting>
-                                             <bumpInput>
-                                                <Shadow />
-                                             </bumpInput>
-                                             <light>
-                                                <Light.Distant>
-                                                   <color>
-                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
-                                                   </color>
-                                                </Light.Distant>
-                                             </light>
-                                          </Lighting>
-                                       </effect>
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <ImageView fitHeight="51.0" fitWidth="64.0" layoutX="-4.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../../../Desktop/customer.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label alignment="CENTER_RIGHT" layoutX="36.0" layoutY="1.0" prefHeight="38.0" prefWidth="170.0" text="0" textAlignment="RIGHT" textFill="#5e3c3c" wrapText="true">
-                                       <cursor>
-                                          <Cursor fx:constant="TEXT" />
-                                       </cursor>
-                                       <effect>
-                                          <Lighting>
-                                             <bumpInput>
-                                                <Shadow />
-                                             </bumpInput>
-                                             <light>
-                                                <Light.Distant>
-                                                   <color>
-                                                      <Color red="0.005768362432718277" green="0.009999999776482582" blue="0.00570000009611249" />
-                                                   </color>
-                                                </Light.Distant>
-                                             </light>
-                                          </Lighting>
-                                       </effect>
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
+                              <Separator layoutY="192.5" prefHeight="3.0" prefWidth="785.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="192.5" />
                            </children>
                         </AnchorPane>
                      </children>
