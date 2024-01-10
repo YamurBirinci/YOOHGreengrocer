@@ -1,145 +1,189 @@
-package controller;
+package data;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.ResourceBundle;
-import data.productData;
-import data.customer_cartData;
-import domain.users;
 import domain.products;
-import domain.customer_cart;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.net.URL;
+public class productData {
 
+    private static productData instance;
 
-public class product_card_cart implements Initializable  {
-
-    @FXML
-    private Button delete_button;
-
-     @FXML
-    private TextField p_amount;
-
-    @FXML
-    private Button product_amount_submit;
-
-    @FXML
-    private ImageView product_image;
-
-    @FXML
-    private Label product_name;
-
-    @FXML
-    private Label product_price;
-
-    
-    
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // FXML dosyası yüklendiğinde yapılacak işlemleri burada gerçekleştirin.
+    private productData() {
     }
 
-    @FXML
-    void to_delete(ActionEvent event) throws IOException {
-        users loggedInUser = loggedIn.getInstance().getLoggedInUser();
-        customer_cartData.deleteProduct(loggedInUser.getUser_id(), product_name.getText());
-        product_price.setText("0");
-        p_amount.setText("0");
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/customer_cart.fxml"));
-        Parent root = loader.load();
-
-        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        currentStage.close();
-
-        Stage newStage = new Stage();
-        newStage.setResizable(false);
-        newStage.setScene(new Scene(root, 960, 540));
-        newStage.setTitle("Group9");
-        newStage.show();
-        
+    public static synchronized productData getInstance() {
+        if (instance == null) {
+            instance = new productData();
+        }
+        return instance;
     }
 
-    @FXML
-    void to_submit(ActionEvent event) throws IOException {   
-        users loggedInUser = loggedIn.getInstance().getLoggedInUser();
-        customer_cart this_product = customer_cartData.getThisProductFromCart(loggedInUser.getUser_id(), product_name.getText());
-        products product = productData.getThisProduct(product_name.getText());
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/group09";
+    private static final String MYSQL_USERNAME = "root";
+    private static final String MYSQL_PASSWORD = "MySQL61.";
+
+    private static Connection getConnection() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        return DriverManager.getConnection(JDBC_URL, MYSQL_USERNAME, MYSQL_PASSWORD);
+    }
+
+    public static List<products> getAllProducts() {
+        List<products> allProduct = new ArrayList<>();
+    
         try {
-            double newKg = Double.parseDouble(p_amount.getText());
-            if (newKg % 0.25 != 0) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Invalid Input");
-                alert.setHeaderText(null);
-                alert.setContentText("Please enter a number divisible by 0.25.");
-                alert.showAndWait();
-                p_amount.clear();
-            }else if (product.getp_stock() < newKg){
-                String warning = "Due to stocks, you can buy a maximum of " + String.valueOf(product.getp_stock())+ "kg of products.";
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Invalid Input");
-                alert.setHeaderText(null);
-                alert.setContentText(warning);
-                alert.showAndWait();
-                p_amount.clear();
+            try (Connection connection = getConnection()) {
+                String query = "select * from group09.product_info order by p_name;"; 
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    ResultSet resultSet = preparedStatement.executeQuery();
+    
+                    while (resultSet.next()) {
+                        products product = new products();
+                        product.setp_id(resultSet.getInt("p_id"));
+                        product.setp_name(resultSet.getString("p_name"));
+                        product.setp_price(resultSet.getDouble("p_price"));
+                        product.setp_stock(resultSet.getInt("p_stock"));
+    
+                        allProduct.add(product);
+                    }
+                }
             }
-            else{
-                double current_product_price = Double.parseDouble(product_price.getText()); 
-                double current_product_kg = this_product.getQuantity();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(); 
+        }
+    
+        return allProduct;
+    }
 
-                double sNewPrice =(current_product_price * newKg) / current_product_kg;
 
-                customer_cartData.updateAmount(loggedInUser.getUser_id(), product_name.getText(), sNewPrice, newKg, this_product.getP_image());
+    public static List<products> getAllFruits() {
+        List<products> fruitsList = new ArrayList<>();
+    
+        try {
+            try (Connection connection = getConnection()) {
+                String query = "select * from product_info where p_type = 'fruit' and p_stock > 0 order by p_name;"; 
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    ResultSet resultSet = preparedStatement.executeQuery();
+    
+                    while (resultSet.next()) {
+                        products fruit = new products();
+                        fruit.setp_id(resultSet.getInt("p_id"));
+                        fruit.setp_name(resultSet.getString("p_name"));
+                        fruit.setp_price(resultSet.getDouble("p_price"));
+                        fruit.setp_stock(resultSet.getInt("p_stock"));
+                        fruit.setp_kg(resultSet.getDouble("p_kg"));
+                        fruit.setp_image(resultSet.getString("p_image"));
+    
+                        fruitsList.add(fruit);
+                    }
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(); 
+        }
+    
+        return fruitsList;
+    }
+
+
+    public static List<products> getAllVegetables() {
+        List<products> vegetableList = new ArrayList<>();
+    
+        try {
+            try (Connection connection = getConnection()) {
+                String query = "select * from product_info where p_type = 'vegetable' and p_stock > 0 order by p_name;"; 
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    ResultSet resultSet = preparedStatement.executeQuery();
+    
+                    while (resultSet.next()) {
+                        products vegetable = new products();
+                        vegetable.setp_id(resultSet.getInt("p_id"));
+                        vegetable.setp_name(resultSet.getString("p_name"));
+                        vegetable.setp_price(resultSet.getDouble("p_price"));
+                        vegetable.setp_stock(resultSet.getInt("p_stock"));
+                        vegetable.setp_kg(resultSet.getDouble("p_kg"));
+                        vegetable.setp_image(resultSet.getString("p_image"));
+    
+                        vegetableList.add(vegetable);
+                    }
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(); 
+        }
+    
+        return vegetableList;
+    }
+
+    public static products getThisProduct(String product_name) {
+       
+        products product = new products();
+    
+        try {
+            try (Connection connection = getConnection()) {
+                String query = "select * from product_info where p_name = ?"; 
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    preparedStatement.setString(1, product_name);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+
+                    if (resultSet.next()) {
+                        product.setp_id(resultSet.getInt("p_id"));
+                        product.setp_name(resultSet.getString("p_name"));
+                        product.setp_price(resultSet.getDouble("p_price"));
+                        product.setp_stock(resultSet.getDouble("p_stock"));
+                        product.setp_kg(resultSet.getDouble("p_kg"));
+                        product.setp_image(resultSet.getString("p_image"));
+                        }
+
+                    }
+                }
+            }
+         
         
-                String changePrice = String.format("%.2f", sNewPrice);
-                product_price.setText(changePrice);
+        catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(); 
+        }
+    
+        return product;
+    }
+        
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/customer_cart.fxml"));
-                Parent root = loader.load();
-
-                Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-                    currentStage.close();
-
-                Stage newStage = new Stage();
-                newStage.setResizable(false);
-                newStage.setScene(new Scene(root, 960, 540));
-                newStage.setTitle("Group9");
-                newStage.show();
+    public static List<products> searchProduct(String key) {
+        List<products> searchResult = new ArrayList<>();
+    
+        try {
+            try (Connection connection = getConnection()) {
+                String query = "SELECT * FROM product_info WHERE p_name LIKE ? and p_stock > 0 order by p_name;"; 
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    preparedStatement.setString(1, "%" + key + "%");
+                    ResultSet resultSet = preparedStatement.executeQuery();
+    
+                    while (resultSet.next()) {
+                        products searchProduct = new products();
+                        searchProduct.setp_id(resultSet.getInt("p_id"));
+                        searchProduct.setp_name(resultSet.getString("p_name"));
+                        searchProduct.setp_price(resultSet.getDouble("p_price"));
+                        searchProduct.setp_stock(resultSet.getInt("p_stock"));
+                        searchProduct.setp_kg(resultSet.getDouble("p_kg"));
+                        searchProduct.setp_image(resultSet.getString("p_image"));
+    
+                        searchResult.add(searchProduct);
+                    }
+                }
             }
-
-        }catch(NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Input");
-            alert.setHeaderText(null);
-            alert.setContentText("Please enter numbers only.");
-            alert.showAndWait();
-            p_amount.clear();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(); 
         }
+    
+        return searchResult;
     }
 
-    void setData(customer_cart cart_item){
-        String imagePath = cart_item.getP_image();
-        if (imagePath != null) {
-            Image image = new Image(getClass().getResourceAsStream(imagePath));
-            product_image.setImage(image);
-        }
-        String changePrice = String.format("%.2f", cart_item.getPrice());
-        product_name.setText(cart_item.getProduct_name());
-        product_price.setText(String.valueOf(changePrice));
-        p_amount.setText(String.valueOf(cart_item.getQuantity()));
-    }
 
+    
 }
+
