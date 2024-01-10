@@ -91,11 +91,12 @@ public class orderData {
                     while (resultSet.next()) {
                         order order = new order();
                         order.setOrder_customer_id(resultSet.getInt("order_customer_id"));
-                        order.setOrder_p_price(resultSet.getDouble("orderID"));
+                        order.setOrderID(resultSet.getString("orderID"));
                         order.setOrder_status(resultSet.getString("order_status"));
                         order.setTime(resultSet.getTimestamp("time"));
                         order.setOrder_p_name(resultSet.getString("order_p_name"));
                         order.setOrder_p_kg(resultSet.getDouble("order_p_kg"));
+                        order.setOrder_p_price(resultSet.getDouble("order_p_price"));
 
                         allOrders.add(order);
                     }
