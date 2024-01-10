@@ -34,7 +34,7 @@ public class userData {
     public static users userAuthenticate(String username, String user_password) {
 		users loggedInUser = null;
         try (Connection connection = getConnection()) {
-			String query = "SELECT * FROM user_info WHERE username = ? AND BINARY user_password = ?";
+			String query = "SELECT * FROM group09.user_info WHERE username = ? AND BINARY user_password = ?";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, username);
 			preparedStatement.setString(2, user_password);
@@ -60,10 +60,11 @@ public class userData {
 		return loggedInUser;
 	}
 
+
     public static boolean customerSave(String user_name, String user_surname, String username, String user_password) {
         boolean save = false;
         try (Connection connection = getConnection()) {
-			String insertQuery = "INSERT INTO user_info (user_name, user_surname, username, user_password, user_role) VALUES (?, ?, ?, ?, ?)";
+			String insertQuery = "INSERT INTO group09.user_info (user_name, user_surname, username, user_password, user_role) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
                 preparedStatement.setString(1, user_name);
                 preparedStatement.setString(2, user_surname);
@@ -86,7 +87,7 @@ public class userData {
         boolean update = false;
     
         try (Connection connection = getConnection()) {
-            String query = "update user_info SET user_name = ?, user_surname = ?, username = ?, user_phone = ?, user_address = ? WHERE user_id = ?";
+            String query = "update group09.user_info SET user_name = ?, user_surname = ?, username = ?, user_phone = ?, user_address = ? WHERE user_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, user_name);
             preparedStatement.setString(2, user_surname);
@@ -111,7 +112,7 @@ public class userData {
         boolean update = false;
     
         try (Connection connection = getConnection()) {
-            String query = "update user_info SET user_password = ? WHERE user_id = ?";
+            String query = "update group09.user_info SET user_password = ? WHERE user_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, newPassword);
             preparedStatement.setInt(2, id);
