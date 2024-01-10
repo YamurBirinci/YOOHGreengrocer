@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #C4CBC0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.owner">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane layoutX="380.0" layoutY="170.0" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <HBox prefHeight="72.0" prefWidth="960.0" spacing="20.0" style="-fx-background-color: F1F1F1;" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="63.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" translateY="5.0">
+                           <image>
+                              <Image url="@../img/yooh_logo2.png" />
+                           </image>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </ImageView>
+                        <Label text="made by G9" translateX="30.0" translateY="30.0">
+                           <font>
+                              <Font name="Ebrima" size="12.0" />
+                           </font>
+                        </Label>
+                        <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="35.0" prefWidth="4.0" translateX="35.0" translateY="20.0" />
+                        <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="39.0" prefWidth="285.0" translateX="40.0" translateY="20.0" />
+                        <Pane prefHeight="72.0" prefWidth="215.0" translateX="15.0">
+                           <children>
+                              
+                           </children></Pane>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="72.0" prefWidth="204.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="owner_username" text="Owner 1">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </top>
+               <left>
+                  <VBox prefHeight="468.0" prefWidth="203.0" style="-fx-background-color: F1F1F1;" BorderPane.alignment="CENTER">
+                     <children>
+                        <VBox prefHeight="277.0" prefWidth="203.0">
+                           <children>
+                              <HBox prefHeight="60.0" prefWidth="203.0" />
+                              <Button fx:id="productManagementButton" mnemonicParsing="false" onAction="#to_prod_management" prefHeight="73.0" prefWidth="203.0" text="Product Management" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="carrierManagementButton" mnemonicParsing="false" onAction="#to_carrier_management" prefHeight="73.0" prefWidth="203.0" text="Carrier Management" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="orderManagementButton" mnemonicParsing="false" onAction="#to_orderManagement" prefHeight="73.0" prefWidth="203.0" text="Order Management">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="inventoryButton" mnemonicParsing="false" onAction="#to_inventory_page" prefHeight="72.0" prefWidth="203.0" text="Inventory">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="statisticsButton" mnemonicParsing="false" onAction="#to_statistics_page" prefHeight="67.0" prefWidth="203.0" text="Statistics">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="93.0" prefWidth="203.0" VBox.vgrow="ALWAYS" />
+                        <HBox prefHeight="42.0" prefWidth="203.0">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" translateX="23.0" translateY="5.0">
+                                 <image>
+                                    <Image url="@../img/logout_icon.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="logOutButton" mnemonicParsing="false" prefHeight="22.0" prefWidth="152.0" style="-fx-background-color: transparent;" text="Log out       ">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="order_panel" prefHeight="471.0" prefWidth="765.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <TableView fx:id="order_table" layoutX="21.0" layoutY="49.0" prefHeight="255.0" prefWidth="724.0" style="-fx-background-color: #E2E8DF;">
+                                <columns>
+                                  <TableColumn fx:id="orderID_column" prefWidth="123.0" text="Order ID" />
+                                  <TableColumn fx:id="customerID_column" prefWidth="77.0" text="Customer ID" />
+                                    <TableColumn fx:id="time_column" prefWidth="59.0" text="Time" />
+                                    <TableColumn fx:id="product_column" prefWidth="112.0" text="Product" />
+                                    <TableColumn fx:id="price_column" prefWidth="93.0" text="Price" />
+                                    <TableColumn fx:id="kg_column" prefWidth="56.0" text="Kg" />
+                                    <TableColumn fx:id="status_column" prefWidth="203.0" text="Order Status" />
+                                </columns>
+                              </TableView>
+                              <ComboBox fx:id="choose_status_combobox" layoutX="325.0" layoutY="14.0" onAction="#to_selected_status_table" prefHeight="25.0" prefWidth="217.0" promptText="Choose Status" />
+                              <Label layoutX="224.0" layoutY="16.0" text="Order Status:">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="inventoryPage" prefHeight="468.0" prefWidth="760.0" visible="false">
+                           <children>
+                              <TableView fx:id="incentoryTable" prefHeight="446.0" prefWidth="730.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+                                 <columns>
+                                    <TableColumn fx:id="invntryTabIDcol" prefWidth="100.0" text="Product ID" />
+                                    <TableColumn fx:id="invntryTabNameCol" prefWidth="100.0" text="Product Name" />
+                                    <TableColumn fx:id="invntryTabTypeCol" prefWidth="100.0" text="Type" />
+                                    <TableColumn fx:id="invntryTabStockCol" prefWidth="100.0" text="Stock" />
+                                    <TableColumn fx:id="invntryTabPriceCol" prefWidth="100.0" text="Price" />
+                                    <TableColumn fx:id="invntryTabStatCol" prefWidth="100.0" text="Status" />
+                                    <TableColumn fx:id="invntryTabDateCol" prefWidth="100.0" text="Date" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="productManagementPage" prefHeight="467.0" prefWidth="757.0" visible="false">
+                           <children>
+                              <AnchorPane fx:id="prodManagTab" layoutX="7.0" layoutY="15.0" prefHeight="226.0" prefWidth="551.0" AnchorPane.bottomAnchor="226.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="268.0" AnchorPane.topAnchor="15.0" />
+                              <AnchorPane layoutY="270.0" prefHeight="490.0" prefWidth="766.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane fx:id="update_stock_panel" layoutX="23.0" layoutY="304.0" prefHeight="142.0" prefWidth="709.0" style="-fx-background-color: #9DA896; -fx-background-radius: 10;">
+                                       <children>
+                                          <Button fx:id="add_button" layoutX="464.0" layoutY="46.0" mnemonicParsing="false" onAction="#to_add_quantity" prefHeight="32.0" prefWidth="64.0" style="-fx-background-radius: 10;" text="+" AnchorPane.bottomAnchor="45.0">
+                                             <effect>
+                                                <DropShadow>
+                                                   <color>
+                                                      <Color red="0.5263158082962036" green="0.5263158082962036" blue="0.5263158082962036" />
+                                                   </color>
+                                                </DropShadow>
+                                             </effect>
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Button>
+                                          <TextField fx:id="prodStockInput" layoutX="227.0" layoutY="80.0" prefHeight="25.0" prefWidth="114.0">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="90.0" layoutY="82.0" prefHeight="27.0" prefWidth="137.0" text="Product Quantity:">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="decrease_button" layoutX="392.0" layoutY="46.0" mnemonicParsing="false" onAction="#to_dec_quantity" prefHeight="32.0" prefWidth="64.0" style="-fx-background-radius: 10;" text="-">
+                                             <effect>
+                                                <DropShadow>
+                                                   <color>
+                                                      <Color red="0.5263158082962036" green="0.5263158082962036" blue="0.5263158082962036" />
+                                                   </color>
+                                                </DropShadow>
+                                             </effect>
+                                             <font>
+                                                <Font name="System Bold" size="24.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="updatePrice_panel" layoutX="23.0" layoutY="304.0" prefHeight="142.0" prefWidth="709.0" style="-fx-background-color: #9DA896; -fx-background-radius: 10;" visible="false">
+                                       <children>
+                                          <TextField fx:id="prodPriceInput1" layoutX="227.0" layoutY="76.0" prefHeight="30.0" prefWidth="115.0" />
+                                          <Button fx:id="updatePriceButton" layoutX="400.0" layoutY="51.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" style="-fx-background-radius: 10;" text="Update" AnchorPane.bottomAnchor="51.0">
+                                             <effect>
+                                                <DropShadow>
+                                                   <color>
+                                                      <Color red="0.43421053886413574" green="0.43421053886413574" blue="0.43421053886413574" />
+                                                   </color>
+                                                </DropShadow>
+                                             </effect>
+                                          </Button>
+                                          <Label layoutX="151.0" layoutY="76.0" prefHeight="27.0" prefWidth="80.0" text="Price(TL):">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="delete_panel" layoutX="23.0" layoutY="309.0" prefHeight="142.0" prefWidth="709.0" style="-fx-background-color: #9DA896; -fx-background-radius: 10;" visible="false">
+                                       <children>
+                                          <Button fx:id="prodDltBtn11" layoutX="400.0" layoutY="51.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" style="-fx-background-radius: 10;" text="Delete" AnchorPane.bottomAnchor="51.0">
+                                             <effect>
+                                                <DropShadow>
+                                                   <color>
+                                                      <Color red="0.43421053886413574" green="0.43421053886413574" blue="0.43421053886413574" />
+                                                   </color>
+                                                </DropShadow>
+                                             </effect>
+                                          </Button>
+                                       </children>
+                                    </AnchorPane>
+                                    <TextField fx:id="prodIDInput" layoutX="250.0" layoutY="337.0" prefHeight="25.0" prefWidth="115.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="159.0" layoutY="338.0" prefHeight="27.0" prefWidth="95.0" text="Product ID:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="updatePrice_panel_button" layoutX="336.0" layoutY="253.0" mnemonicParsing="false" onAction="#to_updatePrice_panel" text="Update Price" />
+                                    <Button fx:id="updateStock_panel_button" layoutX="172.0" layoutY="253.0" mnemonicParsing="false" onAction="#to_updateStock_panel" text="Update Stock" />
+                                    <Button fx:id="delete_panel_button" layoutX="492.0" layoutY="253.0" mnemonicParsing="false" onAction="#to_delete_panel" text="Delete Product" />
+                                    <TableView fx:id="prodManagementTable" layoutX="88.0" layoutY="27.0" prefHeight="200.0" prefWidth="554.0" style="-fx-background-color: #E2E8DF; -fx-background-radius: 10;">
+                                      <columns>
+                                        <TableColumn fx:id="prodManagTabIDcol" prefWidth="75.0" text="p_id" />
+                                        <TableColumn fx:id="prodManagTabNameCol" prefWidth="205.0" text="p_name" />
+                                          <TableColumn fx:id="prodManagTabStockCol" prefWidth="126.0" text="p_stock" />
+                                          <TableColumn fx:id="prodManagTabPriceCol" prefWidth="147.0" text="p_price" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="carrierManagementPage" prefHeight="471.0" prefWidth="752.0" visible="false">
+                           <children>
+                              <AnchorPane prefHeight="523.0" prefWidth="502.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="276.0" AnchorPane.topAnchor="10.0">
+                                 <children>
+                                    <TableView fx:id="carrierManagTab" prefHeight="451.0" prefWidth="480.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn fx:id="carrierManagTabIDcol" prefWidth="71.0" text="Carrier ID" />
+                                          <TableColumn fx:id="carrierManagTabNameCol" prefWidth="129.0" text="Carrier Name" />
+                                          <TableColumn fx:id="carrierManagTabDateCol" prefWidth="100.0" text="Starting Date" />
+                                          <TableColumn fx:id="carrierManagTabTotCarryCol" prefWidth="100.0" text="Total Carries" />
+                                          <TableColumn fx:id="carrierManagTabStatCol" prefWidth="100.0" text="Status" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="500.0" layoutY="10.0" prefHeight="543.0" prefWidth="268.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
+                                 <children>
+                                    <Label layoutX="28.0" layoutY="22.0" prefHeight="27.0" prefWidth="74.0" text="Carrier ID:" AnchorPane.leftAnchor="28.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="carrierIDInput" layoutX="105.0" layoutY="20.0" minHeight="30.0" prefWidth="150.0" />
+                                    <Label layoutY="61.0" prefHeight="27.0" prefWidth="109.0" text="Carrier Name:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="carrierNameInput" layoutX="105.0" layoutY="60.0" minHeight="30.0" prefWidth="150.0" />
+                                    <Label layoutX="61.0" layoutY="105.0" prefHeight="27.0" prefWidth="95.0" text="Date: ">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="carrierAddBtn" layoutX="140.0" layoutY="346.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Add">
+                                       <effect>
+                                          <DropShadow>
+                                             <color>
+                                                <Color red="0.6431372761726379" green="0.6431372761726379" blue="0.6431372761726379" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Button>
+                                    <Button fx:id="carrierUpdtBtn" layoutX="12.0" layoutY="346.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Update">
+                                       <effect>
+                                          <DropShadow>
+                                             <color>
+                                                <Color red="0.6431372761726379" green="0.6431372761726379" blue="0.6431372761726379" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Button>
+                                    <Button fx:id="carrierClrBtn" layoutX="140.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Clear">
+                                       <effect>
+                                          <DropShadow>
+                                             <color>
+                                                <Color red="0.6431372761726379" green="0.6431372761726379" blue="0.6431372761726379" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Button>
+                                    <Button fx:id="carrierDltBtn" layoutX="12.0" layoutY="282.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="116.0" text="Delete">
+                                       <effect>
+                                          <DropShadow>
+                                             <color>
+                                                <Color red="0.6431372761726379" green="0.6431372761726379" blue="0.6431372761726379" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Button>
+                                    <Label layoutX="50.0" layoutY="181.0" prefHeight="27.0" prefWidth="56.0" text="Status:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="chooseCarrierStat" layoutX="104.0" layoutY="180.0" minHeight="30.0" prefWidth="150.0" promptText="Choose Type.." />
+                                    <TextField fx:id="carrierStartDateInput" layoutX="105.0" layoutY="100.0" minHeight="30.0" prefWidth="150.0" />
+                                    <Label layoutX="5.0" layoutY="142.0" prefHeight="27.0" prefWidth="95.0" text="Total Carries:">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="carrierTotCarriesInput" layoutX="105.0" layoutY="140.0" minHeight="30.0" prefWidth="150.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="statisticsPage" prefHeight="471.0" prefWidth="771.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="35.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-background-color: white;" styleClass="rad">
+                                 <children>
+                                    <Label layoutX="27.0" layoutY="9.0" prefHeight="62.0" prefWidth="146.0" text="Number of Sold Products" textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="soldProductStat" layoutX="85.0" layoutY="100.0" prefHeight="45.0" prefWidth="30.0" text="0 ">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="284.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+                                 <children>
+                                    <Label layoutX="59.0" layoutY="7.0" prefHeight="59.0" prefWidth="82.0" text="Total Income" textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="totalIncomeStat" layoutX="74.0" layoutY="100.0" prefHeight="45.0" prefWidth="53.0" text="0.0">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="531.0" layoutY="26.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-background-color: white;" styleClass="a">
+                                 <children>
+                                    <Label layoutX="39.0" layoutY="-3.0" prefHeight="79.0" prefWidth="126.0" text="Number of Customer" textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="numOfCustomerStat" layoutX="90.0" layoutY="100.0" prefHeight="45.0" prefWidth="24.0" text="0">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

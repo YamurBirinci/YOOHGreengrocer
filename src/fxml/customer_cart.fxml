@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #C4CBC0;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.customer_shoppingcart">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane layoutX="380.0" layoutY="170.0" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <HBox prefHeight="72.0" prefWidth="960.0" spacing="20.0" style="-fx-background-color: F1F1F1;" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="63.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" translateY="5.0">
+                           <image>
+                              <Image url="@../img/yooh_logo2.png" />
+                           </image>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </ImageView>
+                        <Label text="made by G9" translateX="30.0" translateY="30.0">
+                           <font>
+                              <Font name="Ebrima" size="12.0" />
+                           </font>
+                        </Label>
+                        <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="35.0" prefWidth="4.0" translateX="35.0" translateY="20.0" />
+                        <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="39.0" prefWidth="285.0" translateX="40.0" translateY="20.0" />
+                        <Pane prefHeight="72.0" prefWidth="215.0" translateX="15.0" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="72.0" prefWidth="204.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="customer_username" text="Yağmur Fatma Birinci">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" right="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </HBox>
+               </top>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="cart_panel" layoutX="58.0" layoutY="77.0" prefHeight="468.0" prefWidth="757.0" style="-fx-background-color: C4CBC0;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane fx:id="cart_product" layoutX="14.0" layoutY="14.0" prefHeight="438.0" prefWidth="494.0" style="-fx-border-color: #B1B8AD; -fx-background-radius: 7; -fx-border-radius: 7;">
+                                 <children>
+                                    <ScrollPane layoutX="2.0" layoutY="2.0" prefHeight="436.0" prefWidth="522.0" style="-fx-background-radius: 7;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-29.0" AnchorPane.topAnchor="1.0">
+                                       <content>
+                                          <VBox fx:id="product_panel" prefHeight="435.0" prefWidth="504.0" style="-fx-background-color: #DDE1DB; -fx-background-radius: 2;">
+                                             <padding>
+                                                <Insets bottom="20.0" top="20.0" />
+                                             </padding>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="572.0" layoutY="151.0" prefHeight="172.0" prefWidth="375.0" style="-fx-border-color: #B1B8AD; -fx-background-color: #DDE1DB; -fx-background-radius: 7; -fx-border-radius: 7;">
+                                 <children>
+                                    <Label layoutX="115.0" layoutY="14.0" text="Order Summary" textFill="#1f281b">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="115.0" layoutY="52.0" text="Product Total:" textFill="#1f281b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="170.0" layoutY="77.0" text="KDV:" textFill="#1f281b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="124.0" layoutY="101.0" text="Cargo Total:" textFill="#1f281b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Separator layoutX="16.0" layoutY="136.0" prefHeight="1.0" prefWidth="343.0" style="-fx-background-color: #B1B8AD;" />
+                                    <Label layoutX="165.0" layoutY="145.0" text="Total:" textFill="#1f281b">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="product_total" layoutX="211.0" layoutY="54.0" text="0">
+                                       <font>
+                                          <Font name="System Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="kdv" layoutX="210.0" layoutY="79.0" text="0">
+                                       <font>
+                                          <Font name="System Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="cargo_total" layoutX="210.0" layoutY="103.0" text="0">
+                                       <font>
+                                          <Font name="System Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="total" layoutX="210.0" layoutY="147.0" text="0">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="572.0" layoutY="14.0" prefHeight="129.0" prefWidth="374.0" style="-fx-border-color: #B1B8AD; -fx-background-color: #DDE1DB; -fx-background-radius: 7; -fx-border-radius: 7;">
+                                 <children>
+                                    <Label layoutX="117.0" layoutY="14.0" text="Estimated Delivery" textFill="#1f281b">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="delivery" layoutX="94.0" layoutY="39.0" onAction="#selected_delivery" prefHeight="25.0" prefWidth="187.0" promptText="Choose delivery time" />
+                                    <Label layoutX="131.0" layoutY="86.0" text="Same day delivery option" textFill="#164d13">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="121.0" layoutY="103.0" text="for orders placed before 15.00" textFill="#164d13">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="569.0" layoutY="332.0" prefHeight="119.0" prefWidth="378.0" style="-fx-border-color: #B1B8AD; -fx-background-color: #DDE1DB; -fx-background-radius: 7; -fx-border-radius: 7;">
+                                 <children>
+                                    <Button fx:id="order_button" layoutX="91.0" layoutY="13.0" mnemonicParsing="false" onAction="#to_order" prefHeight="40.0" prefWidth="197.0" style="-fx-background-radius: 7; -fx-background-color: #5D7B4D;" text="ORDER &gt;">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="TWO_PASS_BOX" height="15.0" radius="7.0" width="15.0" />
+                                       </effect>
+                                    </Button>
+                                    <Button fx:id="return_button" layoutX="91.0" layoutY="62.0" mnemonicParsing="false" onAction="#to_homepage" prefHeight="40.0" prefWidth="197.0" style="-fx-background-radius: 7; -fx-background-color: #D8A961;" text="&lt; RETURN TO HOMEPAGE">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow blurType="TWO_PASS_BOX" height="15.0" radius="7.0" width="15.0" />
+                                       </effect>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="warning" layoutX="391.0" layoutY="143.0" prefHeight="137.0" prefWidth="254.0" style="-fx-background-color: white; -fx-background-radius: 12;" visible="false">
+                                 <effect>
+                                    <DropShadow height="53.75" radius="21.1125" width="32.7">
+                                       <color>
+                                          <Color red="0.7052631378173828" green="0.7052631378173828" blue="0.7052631378173828" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <children>
+                                    <Label layoutX="55.0" layoutY="26.0" prefHeight="29.0" prefWidth="144.0" text="You cannot place an order" />
+                                    <Label layoutX="40.0" layoutY="47.0" text="without specifying an order time." />
+                                    <Button fx:id="ok_button" layoutX="115.0" layoutY="78.0" mnemonicParsing="false" onAction="#close_warning" text="OK">
+                                       <effect>
+                                          <DropShadow>
+                                             <color>
+                                                <Color red="0.6000000238418579" green="0.6000000238418579" blue="0.6000000238418579" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="warning2" layoutX="391.0" layoutY="143.0" prefHeight="137.0" prefWidth="254.0" style="-fx-background-color: white; -fx-background-radius: 12;" visible="false">
+                                 <effect>
+                                    <DropShadow height="53.75" radius="21.1125" width="32.7">
+                                       <color>
+                                          <Color red="0.7052631378173828" green="0.7052631378173828" blue="0.7052631378173828" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <children>
+                                    <Label layoutX="56.0" layoutY="27.0" prefHeight="29.0" prefWidth="151.0" text="Don't forget to fill your cart " />
+                                    <Label layoutX="109.0" layoutY="48.0" text="to order." />
+                                    <Button fx:id="ok_button2" layoutX="115.0" layoutY="78.0" mnemonicParsing="false" onAction="#close_warning2" text="OK">
+                                       <effect>
+                                          <DropShadow>
+                                             <color>
+                                                <Color red="0.6000000238418579" green="0.6000000238418579" blue="0.6000000238418579" />
+                                             </color>
+                                          </DropShadow>
+                                       </effect>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="after_cart_panel" prefHeight="468.0" prefWidth="960.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="313.0" layoutY="54.0" prefHeight="200.0" prefWidth="322.0" style="-fx-background-color: white; -fx-background-radius: 12;">
+                                 <effect>
+                                    <DropShadow>
+                                       <color>
+                                          <Color red="0.5394737124443054" green="0.5394737124443054" blue="0.5394737124443054" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                                 <children>
+                                    <Label layoutX="82.0" layoutY="35.0" text="Congratulations!" textFill="#275736">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="69.0" layoutY="73.0" text="The order was received">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="104.0" layoutY="92.0" text="for delivery on">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="21.0" layoutY="161.0" text="Don't forget to follow My Orders section to check order details!">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="date" layoutX="50.0" layoutY="113.0" text="Label">
+                                       <font>
+                                          <Font name="System Bold Italic" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <Button fx:id="ok_button" layoutX="386.0" layoutY="288.0" mnemonicParsing="false" onAction="#to_hp_afterOrder" prefHeight="64.0" prefWidth="177.0" style="-fx-background-color: #D8A961; -fx-background-radius: 12;" text="Click to continue">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow>
+                                       <color>
+                                          <Color red="0.5789473652839661" green="0.5789473652839661" blue="0.5789473652839661" />
+                                       </color>
+                                       <input>
+                                          <InnerShadow>
+                                             <color>
+                                                <Color red="0.8289473652839661" green="0.8289473652839661" blue="0.8289473652839661" />
+                                             </color>
+                                          </InnerShadow>
+                                       </input>
+                                    </DropShadow>
+                                 </effect>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
