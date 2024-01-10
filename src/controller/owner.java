@@ -67,7 +67,7 @@ public class owner {
     private ComboBox<String> choose_status_combobox;
 
     @FXML
-    private TableView<?> order_table;
+    private TableView<order> order_table;
 
     @FXML
     private TableColumn<?, ?> orderID_column;
@@ -328,6 +328,8 @@ public class owner {
 
         prodManagementTable.getItems().addAll(productList);
 
+        
+
     }
 
     @FXML
@@ -369,6 +371,7 @@ public class owner {
 
     @FXML
     void to_add_quantity(ActionEvent event) {
+        
 
     }
 
@@ -388,6 +391,7 @@ public class owner {
             status_column.setCellValueFactory(new PropertyValueFactory<>("order_status"));
 
             order_table.getItems().addAll(allorderList);
+            System.out.println("List size: " + allorderList.size());
         }
     }
 
