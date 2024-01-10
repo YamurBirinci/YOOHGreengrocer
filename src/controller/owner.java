@@ -1,6 +1,6 @@
 package controller;
 
-import javafx.beans.Observable;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,19 +15,23 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import data.orderData;
+import data.productData;
+import domain.order;
+import domain.products;
+import domain.users;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class owner {
 
-    //combo boxlarda yer alacak seçenekleri tanımlıyorum
-    ObservableList<String> carrierStatList = FXCollections.observableArrayList("Full time", "Half time");
-
-    ObservableList<String> prodStatList = FXCollections.observableArrayList("Full price", "Discount price");
-
-    ObservableList<String> prodTypeList = FXCollections.observableArrayList("Fruits", "Vegetables");
+    ObservableList<String> statusList = FXCollections.observableArrayList("All", "Order Received", "Order Has Been Prepared", "Delivered to cargo", "Order Was delivered");
+        
 
     @FXML
     private Button carrierAddBtn;
@@ -58,6 +62,33 @@ public class owner {
 
     @FXML
     private TableColumn<?, ?> carrierManagTabTotCarryCol;
+
+    @FXML
+    private ComboBox<String> choose_status_combobox;
+
+    @FXML
+    private TableView<?> order_table;
+
+    @FXML
+    private TableColumn<?, ?> orderID_column;
+
+    @FXML
+    private TableColumn<?, ?> kg_column;
+
+    @FXML
+    private TableColumn<?, ?> customerID_column;
+
+    @FXML
+    private TableColumn<?, ?> status_column;
+
+    @FXML
+    private TableColumn<?, ?> time_column;
+
+    @FXML
+    private TableColumn<?, ?> product_column;
+
+    @FXML
+    private TableColumn<?, ?> price_column;
 
     @FXML
     private Button carrierManagementButton;
@@ -153,28 +184,20 @@ public class owner {
     private AnchorPane prodManagTab;
 
     @FXML
-    private TableColumn<?, ?> prodManagTabDateCol;
+    private TableColumn<products, Integer> prodManagTabIDcol;
 
     @FXML
-    private TableColumn<?, ?> prodManagTabIDcol;
+    private TableColumn<products, String> prodManagTabNameCol;
 
     @FXML
-    private TableColumn<?, ?> prodManagTabNameCol;
+    private TableColumn<products, Double> prodManagTabPriceCol;
 
     @FXML
-    private TableColumn<?, ?> prodManagTabPriceCol;
+    private TableColumn<products, Double> prodManagTabStockCol;
+
 
     @FXML
-    private TableColumn<?, ?> prodManagTabStatCol;
-
-    @FXML
-    private TableColumn<?, ?> prodManagTabStockCol;
-
-    @FXML
-    private TableColumn<?, ?> prodManagTabTypeCol;
-
-    @FXML
-    private TableView<?> prodManagementTable;
+    private TableView<products> prodManagementTable;
 
     @FXML
     private TextField prodNameInput;
@@ -213,14 +236,77 @@ public class owner {
     private BarChart<?, ?> yearlyIncomeChartStat;
 
     @FXML
+    private AnchorPane updatePrice_panel;
+
+    @FXML
+    private AnchorPane delete_panel;
+
+    @FXML
+    private AnchorPane update_stock_panel;
+
+    @FXML
+    private AnchorPane order_panel;
+
+    @FXML
+    private Button updateStock_panel_button;
+
+    @FXML
+    private Button updatePrice_panel_button;
+
+    @FXML
+    private Button delete_panel_button;
+
+    @FXML
+    private Button decrease_button;
+
+    @FXML
+    private Button add_button;
+
+    users loggedInUser = loggedIn.getInstance().getLoggedInUser();
+
+    @FXML
+    void to_delete_panel(ActionEvent event) {
+        updatePrice_panel.setVisible(false);
+        delete_panel.setVisible(true);
+        update_stock_panel.setVisible(false);
+
+    }
+
+    @FXML
+    void to_updateStock_panel(ActionEvent event) {
+        updatePrice_panel.setVisible(false);
+        delete_panel.setVisible(false);
+        update_stock_panel.setVisible(true);
+    }
+
+    @FXML
+    void to_updatePrice_panel(ActionEvent event) {
+        updatePrice_panel.setVisible(true);
+        delete_panel.setVisible(false);
+        update_stock_panel.setVisible(false);
+    }
+
+    @FXML
+    void to_orderManagement(ActionEvent event) {
+        order_panel.setVisible(true);
+        productManagementPage.setVisible(false);
+        carrierManagementPage.setVisible(false);
+        inventoryPage.setVisible(false);
+        statisticsPage.setVisible(false);
+
+        choose_status_combobox.setItems(statusList);
+    }
+
+
+    @FXML
     private void initialize()
-    {
-        //combo box'larda yer alan seçenekleri burada atıyorum
-        chooseCarrierStat.setItems(carrierStatList);
-    
-        chooseProdStat.setItems(prodStatList);
-    
-        chooseProdType.setItems(prodTypeList);
+    {   
+        if (loggedInUser != null) {
+            owner_username.setText("Dear, " + loggedInUser.getUsername());
+        }else {
+            owner_username.setText("Dear Guest");
+        }
+        
     }
 
 
@@ -230,13 +316,18 @@ public class owner {
         carrierManagementPage.setVisible(false);
         inventoryPage.setVisible(false);
         statisticsPage.setVisible(false);
-//connect to sql database and display
+        order_panel.setVisible(false);
 
-        //which button had been pressed
-        prodAddBtn.setOnAction(e -> addPRod());
-        prodDltBtn.setOnAction(e -> deleteProd());
-        prodClrBtn.setOnAction(e -> clearEnteredProd());
-        prodUpdtBtn.setOnAction(e -> updateProd());
+        List<products> productList = productData.getAllProducts();
+
+        prodManagTabIDcol.setCellValueFactory(new PropertyValueFactory<>("p_id"));
+        prodManagTabNameCol.setCellValueFactory(new PropertyValueFactory<>("p_name"));
+        prodManagTabStockCol.setCellValueFactory(new PropertyValueFactory<>("p_stock"));
+        prodManagTabPriceCol.setCellValueFactory(new PropertyValueFactory<>("p_price"));
+
+
+        prodManagementTable.getItems().addAll(productList);
+
     }
 
     @FXML
@@ -245,12 +336,9 @@ public class owner {
         carrierManagementPage.setVisible(true);
         inventoryPage.setVisible(false);
         statisticsPage.setVisible(false);
+        order_panel.setVisible(false);
 
-        //which button had been pressed
-        carrierAddBtn.setOnAction(e -> addCarrier());
-        carrierDltBtn.setOnAction(e -> deleteCarrier());
-        carrierClrBtn.setOnAction(e -> clearEnteredCarrier());
-        carrierUpdtBtn.setOnAction(e -> updateCarrier());
+
     }
 
     @FXML
@@ -259,6 +347,7 @@ public class owner {
         carrierManagementPage.setVisible(false);
         inventoryPage.setVisible(true);
         statisticsPage.setVisible(false);
+        order_panel.setVisible(false);
         //connect with sql and display the product table
 
     }
@@ -269,135 +358,41 @@ public class owner {
         carrierManagementPage.setVisible(false);
         inventoryPage.setVisible(false);
         statisticsPage.setVisible(true);
+        order_panel.setVisible(false);
         //sql statistics table
     }
 
-
-    void addPRod() {
-        
-        // JavaFX te owner'ın info girdiği textler
-        String prodID = prodIDInput.getText();
-        String prodName = prodNameInput.getText();
-        String prodPrice = prodPriceInput.getText();
-        String prodStock = prodStockInput.getText();
-        String prodType = chooseProdType.getSelectionModel().getSelectedItem().toString();
-        String prodStat = chooseProdStat.getSelectionModel().getSelectedItem().toString();
-
-        //bu alınan string isimlerini sql'e ekleme
-
-
-        //ÖNEMLİ!! -> sonra bütün string değerlerini tekrar boşa eşitleme
-        prodID = "";
-        prodName = "";
-        prodPrice = "";
-        prodStock = "";
-    }
-
-    void updateProd(){
-
-        // JavaFX te owner'ın info girdiği textler
-        String prodID = prodIDInput.getText();
-        String prodName = prodNameInput.getText();
-        String prodPrice = prodPriceInput.getText();
-        String prodStock = prodStockInput.getText();
-        String prodType = chooseProdType.getSelectionModel().getSelectedItem().toString();
-        String prodStat = chooseProdStat.getSelectionModel().getSelectedItem().toString();
-
-        //bu alınan infoları check etme eğer aynı değilse, product bilgilerini güncelleme
-
-        //ÖNEMLİ!! -> sonra bütün string değerlerini tekrar boşa eşitleme
-        prodID = "";
-        prodName = "";
-        prodPrice = "";
-        prodStock = "";
-    }
-
-    void deleteProd(){
-
-        // JavaFX te owner'ın info girdiği textler
-        String prodID = prodIDInput.getText();
-        String prodName = prodNameInput.getText();
-        String prodPrice = prodPriceInput.getText();
-        String prodStock = prodStockInput.getText();
-        String prodType = chooseProdType.getSelectionModel().getSelectedItem().toString();
-        String prodStat = chooseProdStat.getSelectionModel().getSelectedItem().toString();
-
-        //bu alınan infoları sql database den silme, tablo güncellenicek
-
-        //ÖNEMLİ!! -> sonra bütün string değerlerini tekrar boşa eşitleme
-        prodID = "";
-        prodName = "";
-        prodPrice = "";
-        prodStock = "";
-
-        
+    @FXML
+    void to_dec_quantity(ActionEvent event) {
 
     }
 
-    void clearEnteredProd(){
+    @FXML
+    void to_add_quantity(ActionEvent event) {
 
-        //JavaFX te owner'ın info girdiği textleri temizle
-        prodIDInput.clear();
-        prodNameInput.clear();
-        prodPriceInput.clear();
-        prodStockInput.clear();
-        
     }
 
-    void addCarrier()
-    {
-        String carrierID = carrierIDInput.getText();
-        String carrierName = carrierNameInput.getText();
-        String carrierStartDate = carrierStartDateInput.getText();
-        String carrierTotCarries = carrierTotCarriesInput.getText();
-        String carrierStat = chooseCarrierStat.getSelectionModel().getSelectedItem().toString();
+    @FXML
+    void to_selected_status_table(ActionEvent event) {
+        if("All".equals(choose_status_combobox.getValue())){
 
-        //ÖNEMLİ!! -> sonra bütün string değerlerini tekrar boşa eşitleme
-        carrierID = "";
-        carrierName = "";
-        carrierStartDate = "";
-        carrierTotCarries = "";
+            List<order> allorderList = orderData.getAllCustomerOrders();
+            
+
+            orderID_column.setCellValueFactory(new PropertyValueFactory<>("orderID"));
+            customerID_column.setCellValueFactory(new PropertyValueFactory<>("order_customer_id"));
+            time_column.setCellValueFactory(new PropertyValueFactory<>("time"));
+            product_column.setCellValueFactory(new PropertyValueFactory<>("order_p_name"));
+            price_column.setCellValueFactory(new PropertyValueFactory<>("order_p_price"));
+            kg_column.setCellValueFactory(new PropertyValueFactory<>("order_p_kg"));
+            status_column.setCellValueFactory(new PropertyValueFactory<>("order_status"));
+
+            order_table.getItems().addAll(allorderList);
+        }
     }
 
-    void deleteCarrier()
-    {
-        String carrierID = carrierIDInput.getText();
-        String carrierName = carrierNameInput.getText();
-        String carrierStartDate = carrierStartDateInput.getText();
-        String carrierTotCarries = carrierTotCarriesInput.getText();
-        String carrierStat = chooseCarrierStat.getSelectionModel().getSelectedItem().toString();
 
-        //ÖNEMLİ!! -> sonra bütün string değerlerini tekrar boşa eşitleme
-        carrierID = "";
-        carrierName = "";
-        carrierStartDate = "";
-        carrierTotCarries = "";
-    }
-
-    void clearEnteredCarrier()
-    {
-        
-        carrierIDInput.clear();
-        carrierNameInput.clear();
-        carrierStartDateInput.clear();
-        carrierTotCarriesInput.clear();
-    }
-
-    void updateCarrier()
-    {
-        String carrierID = carrierIDInput.getText();
-        String carrierName = carrierNameInput.getText();
-        String carrierStartDate = carrierStartDateInput.getText();
-        String carrierTotCarries = carrierTotCarriesInput.getText();
-        String carrierStat = chooseCarrierStat.getSelectionModel().getSelectedItem().toString();
-
-        //ÖNEMLİ!! -> sonra bütün string değerlerini tekrar boşa eşitleme
-        carrierID = "";
-        carrierName = "";
-        carrierStartDate = "";
-        carrierTotCarries = "";   
-    }
-
+   
 }
 
 
