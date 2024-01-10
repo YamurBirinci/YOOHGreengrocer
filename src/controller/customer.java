@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import domain.customer_cart;
+import domain.order;
 import domain.products;
 import domain.users;
 import javafx.event.ActionEvent;
@@ -11,15 +13,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
+import javafx.stage.Stage;
 import data.userData;
+import data.customer_cartData;
+import data.orderData;
 import data.productData;
 
 public class customer implements Initializable{
@@ -31,16 +38,13 @@ public class customer implements Initializable{
     private HBox MyOrders;
 
     @FXML
-    private Button update1_button;
-
-    @FXML
-    private Button update2_button;
-
-    @FXML
     private HBox MyProfile;
 
     @FXML
     private HBox Vegetables;
+
+    @FXML
+    private TextArea address;
 
     @FXML
     private Button button_cart;
@@ -55,19 +59,22 @@ public class customer implements Initializable{
     private Button button_vegetables;
 
     @FXML
-    private VBox product_panel;
+    private PasswordField current_password;
 
     @FXML
-    private AnchorPane products_panel;
-
-    @FXML
-    private AnchorPane cart_panel;
-
-    @FXML
-    private AnchorPane cart_product;
+    private Label customer_username;
 
     @FXML
     private VBox fruitsAndVeg;
+
+    @FXML
+    private PasswordField password1;
+
+    @FXML
+    private PasswordField password2;
+
+    @FXML
+    private AnchorPane products_panel;
 
     @FXML
     private AnchorPane profil_panel;
@@ -77,6 +84,12 @@ public class customer implements Initializable{
 
     @FXML
     private Button search_button;
+
+    @FXML
+    private Button update1_button;
+
+    @FXML
+    private Button update2_button;
 
     @FXML
     private TextField user_name;
@@ -91,29 +104,35 @@ public class customer implements Initializable{
     private TextField user_username;
 
     @FXML
-    private Label customer_username;
-
-    @FXML
     private Label warning1;
 
     @FXML
     private Label warning2;
 
     @FXML
-    private TextArea address;
+    private AnchorPane myOrder_panel;
 
     @FXML
-    private TextField password1;
+    private VBox allMyOrders;
 
     @FXML
-    private TextField password2;
+    private Button logout_button;
 
     @FXML
-    private TextField current_password;
+    private Button my_order_button;
 
-    @Override
+    users loggedInUser = loggedIn.getInstance().getLoggedInUser();
+
+
+
+    public List<customer_cart> getMyCart() {
+        return customer_cartData.myCart(loggedInUser.getUser_id());
+    }
+
+    
+
+    @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        users loggedInUser = loggedIn.getInstance().getLoggedInUser();
 
         if (loggedInUser != null) {
             customer_username.setText("Dear, " + loggedInUser.getUsername());
@@ -123,16 +142,60 @@ public class customer implements Initializable{
     }
 
     @FXML
-    void to_cart(ActionEvent event) {
-        cart_panel.setVisible(true);
+    void to_myOrder(ActionEvent event) {
         profil_panel.setVisible(false);
         products_panel.setVisible(false);
+        myOrder_panel.setVisible(true);
+
+        MyOrders.setStyle("-fx-background-color: #C4CBC0;");
+        Fruits.setStyle("-fx-background-color: #F1F1F1;");
+        Vegetables.setStyle("-fx-background-color: #F1F1F1;");
+        MyProfile.setStyle("-fx-background-color: #F1F1F1;");
+
+        try{
+            List<order> myOrder = orderData.getMyOrders(loggedInUser.getUser_id());
+            for (int i = 0; i < myOrder.size(); i++) {
+
+                HBox hbox = new HBox();
+                hbox.setAlignment(Pos.CENTER);
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/fxml/order_card.fxml"));
+                VBox card_box = loader.load();
+                order_card cartItem = loader.getController();
+                cartItem.setData(myOrder.get(i));
+                hbox.getChildren().add(card_box);
+
+                allMyOrders.getChildren().add(hbox);
+                allMyOrders.setSpacing(20);
+            }
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @FXML
+    void to_cart(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/customer_cart.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        currentStage.close();
+
+        Stage newStage = new Stage();
+        newStage.setResizable(false);
+        newStage.setScene(new Scene(root, 960, 540));
+        newStage.setTitle("Group9");
+        newStage.show();
     }
 
     @FXML
     void to_fruits(ActionEvent event) {
-        cart_panel.setVisible(false);
         profil_panel.setVisible(false);
+        myOrder_panel.setVisible(false);
         products_panel.setVisible(true);
         fruitsAndVeg.getChildren().clear();
 
@@ -170,8 +233,8 @@ public class customer implements Initializable{
 
     @FXML
     void to_profile(ActionEvent event) {
-        cart_panel.setVisible(false);
         profil_panel.setVisible(true);
+        myOrder_panel.setVisible(false);
         products_panel.setVisible(false);
         MyProfile.setStyle("-fx-background-color: #C4CBC0;");
         Vegetables.setStyle("-fx-background-color: #F1F1F1;");
@@ -188,7 +251,7 @@ public class customer implements Initializable{
 
     @FXML
     void to_search(ActionEvent event) {
-        cart_panel.setVisible(false);
+        myOrder_panel.setVisible(false);
         profil_panel.setVisible(false);
         fruitsAndVeg.getChildren().clear();
         products_panel.setVisible(true);
@@ -220,10 +283,11 @@ public class customer implements Initializable{
 
     @FXML
     void to_vegetables(ActionEvent event) {
-        cart_panel.setVisible(false);
         profil_panel.setVisible(false);
         products_panel.setVisible(true);
+        myOrder_panel.setVisible(false);
         fruitsAndVeg.getChildren().clear();
+        
         Vegetables.setStyle("-fx-background-color: #C4CBC0;");
         Fruits.setStyle("-fx-background-color: #F1F1F1;");
         MyProfile.setStyle("-fx-background-color: #F1F1F1;");
@@ -253,6 +317,25 @@ public class customer implements Initializable{
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void to_logout(ActionEvent event) throws IOException {
+        loggedInUser = null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user_login.fxml"));
+        Parent root = loader.load();
+
+        
+        Stage currentStage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        currentStage.close();
+
+        
+        Stage newStage = new Stage();
+        newStage.setResizable(false);
+        newStage.setScene(new Scene(root, 960, 540));
+        newStage.setTitle("Group9");
+        newStage.show();
+    }
+
 
     
 
@@ -290,12 +373,14 @@ public class customer implements Initializable{
         } 
         else if(!password1.getText().equals(password2.getText())) {
             warning2.setText("    Please check your passwords!");
-        }   
+        } 
+        else if(!password1.getText().equals(loggedInUser.getUser_password())){
+            warning2.setText("   Your password is not correct!");
+        }  
         else if(!customer.isStrongPassword(password1.getText())){
             warning2.setText("           Enter strong password.");
         }
         else{
-            users loggedInUser = loggedIn.getInstance().getLoggedInUser();
             int userID = loggedInUser.getUser_id();
             if(userData.updatePasswordById(userID, password1.getText())) {
                 warning2.setText("       Successfully updated.");
@@ -376,5 +461,7 @@ public class customer implements Initializable{
     private static boolean containsSpecialCharacter(String password) {
         return password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*");
     }
+
+    
 
 }
