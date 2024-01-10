@@ -77,5 +77,66 @@ public class orderData {
     
         return myOrder;
     }
+
+
+    public static List<order> getAllCustomerOrders() {
+        List<order> allOrders = new ArrayList<>();
+    
+        try {
+            try (Connection connection = getConnection()) {
+                String query = "SELECT order_customer_id, CONCAT(order_customer_id, '_', time) AS orderID, time, order_p_name, order_p_price, order_p_kg, order_status FROM order_info WHERE order_status = 'Order Received' ORDER BY time DESC;"; 
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    ResultSet resultSet = preparedStatement.executeQuery();
+    
+                    while (resultSet.next()) {
+                        order order = new order();
+                        order.setOrder_customer_id(resultSet.getInt("order_customer_id"));
+                        order.setOrder_p_price(resultSet.getDouble("orderID"));
+                        order.setOrder_status(resultSet.getString("order_status"));
+                        order.setTime(resultSet.getTimestamp("time"));
+                        order.setOrder_p_name(resultSet.getString("order_p_name"));
+                        order.setOrder_p_kg(resultSet.getDouble("order_p_kg"));
+
+                        allOrders.add(order);
+                    }
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(); 
+        }
+    
+        return allOrders;
+    }
+
+
+    public static List<order> getOrdersByStatus(String order_status) {
+        List<order> allOrders = new ArrayList<>();
+    
+        try {
+            try (Connection connection = getConnection()) {
+                String query = "SELECT order_customer_id, CONCAT(order_customer_id, '_', time) AS orderID, time, order_p_name, order_p_price, order_p_kg, order_status FROM order_info WHERE order_status = ? ORDER BY time DESC;"; 
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    preparedStatement.setString(1, order_status);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+    
+                    while (resultSet.next()) {
+                        order order = new order();
+                        order.setOrder_customer_id(resultSet.getInt("order_customer_id"));
+                        order.setOrder_p_price(resultSet.getDouble("orderID"));
+                        order.setOrder_status(resultSet.getString("order_status"));
+                        order.setTime(resultSet.getTimestamp("time"));
+                        order.setOrder_p_name(resultSet.getString("order_p_name"));
+                        order.setOrder_p_kg(resultSet.getDouble("order_p_kg"));
+
+                        allOrders.add(order);
+                    }
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(); 
+        }
+    
+        return allOrders;
+    }
     
 }
