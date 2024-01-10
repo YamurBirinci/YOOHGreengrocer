@@ -33,6 +33,33 @@ public class productData {
         return DriverManager.getConnection(JDBC_URL, MYSQL_USERNAME, MYSQL_PASSWORD);
     }
 
+    public static List<products> getAllProducts() {
+        List<products> allProduct = new ArrayList<>();
+    
+        try {
+            try (Connection connection = getConnection()) {
+                String query = "select * from group09.product_info order by p_name;"; 
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    ResultSet resultSet = preparedStatement.executeQuery();
+    
+                    while (resultSet.next()) {
+                        products product = new products();
+                        product.setp_id(resultSet.getInt("p_id"));
+                        product.setp_name(resultSet.getString("p_name"));
+                        product.setp_price(resultSet.getDouble("p_price"));
+                        product.setp_stock(resultSet.getInt("p_stock"));
+    
+                        allProduct.add(product);
+                    }
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(); 
+        }
+    
+        return allProduct;
+    }
+
 
     public static List<products> getAllFruits() {
         List<products> fruitsList = new ArrayList<>();
@@ -92,6 +119,39 @@ public class productData {
     
         return vegetableList;
     }
+
+    public static products getThisProduct(String product_name) {
+       
+        products product = new products();
+    
+        try {
+            try (Connection connection = getConnection()) {
+                String query = "select * from product_info where p_name = ?"; 
+                try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                    preparedStatement.setString(1, product_name);
+                    ResultSet resultSet = preparedStatement.executeQuery();
+
+                    if (resultSet.next()) {
+                        product.setp_id(resultSet.getInt("p_id"));
+                        product.setp_name(resultSet.getString("p_name"));
+                        product.setp_price(resultSet.getDouble("p_price"));
+                        product.setp_stock(resultSet.getDouble("p_stock"));
+                        product.setp_kg(resultSet.getDouble("p_kg"));
+                        product.setp_image(resultSet.getString("p_image"));
+                        }
+
+                    }
+                }
+            }
+         
+        
+        catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace(); 
+        }
+    
+        return product;
+    }
+        
 
     public static List<products> searchProduct(String key) {
         List<products> searchResult = new ArrayList<>();
