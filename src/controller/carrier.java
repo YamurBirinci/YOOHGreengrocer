@@ -189,22 +189,16 @@ public class carrier {
 
     }
 
+    
 
     @FXML
-    void to_logout(ActionEvent event) throws IOException {
-        loggedInCarrier = null;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user_login.fxml"));
-        Parent root = loader.load();
-
-        Stage currentStage = (Stage) ((javafx.scene.control.Button) event.getSource()).getScene().getWindow();
-        currentStage.close();
-
-        Stage newStage = new Stage();
-        newStage.setResizable(false);
-        newStage.setScene(new Scene(root, 960, 540));
-        newStage.setTitle("Group9");
-        newStage.show();
+    void to_my_profile_page(ActionEvent event) throws IOException {
+        my_profile_page.setVisible(true);
+        my_orders_page.setVisible(false);
+        active_orders_page.setVisible(false);
+        delivered_orders_page.setVisible(false);
     }
+
 
 
     @FXML
@@ -330,14 +324,6 @@ public class carrier {
 //------------------------------------MY PROFILE KISMININ KODU YUKARISI-------------------------------------------------------
 
 
-    @FXML
-    void to_my_profile_page(ActionEvent event) throws IOException {
-        my_profile_page.setVisible(true);
-        my_orders_page.setVisible(false);
-        active_orders_page.setVisible(false);
-        delivered_orders_page.setVisible(false);
-    }
-
     // to my orders page my orders sayfasından sipariş durumunu değştirme
     @FXML
     void to_orders(ActionEvent event) throws IOException {
@@ -389,6 +375,22 @@ public class carrier {
         textArea.setText(sb.toString());
     }
 
+
+        @FXML
+    void to_logout(ActionEvent event) throws IOException {
+        loggedInCarrier = null;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/user_login.fxml"));
+        Parent root = loader.load();
+
+        Stage currentStage = (Stage) ((javafx.scene.control.Button) event.getSource()).getScene().getWindow();
+        currentStage.close();
+
+        Stage newStage = new Stage();
+        newStage.setResizable(false);
+        newStage.setScene(new Scene(root, 960, 540));
+        newStage.setTitle("Group9");
+        newStage.show();
+    }
 }
 
 
