@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="960.0" style="-fx-background-color: #5D7B4D;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.login_page">
+   <left>
+      <AnchorPane prefHeight="540.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="302.0" fitWidth="284.0" layoutX="38.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/yooh_logo.png" />
+               </image>
+            </ImageView>
+            <Text fill="#23321a" layoutX="136.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="made by Group9">
+               <font>
+                  <Font name="Ebrima" size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="540.0" prefWidth="600.0" style="-fx-background-color: cbd3c6; -fx-background-radius: 45;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="username" layoutX="150.0" layoutY="225.0" prefHeight="26.0" prefWidth="300.0" promptText="Type your username" style="-fx-background-radius: 50;">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <PasswordField fx:id="password" layoutX="150.0" layoutY="322.0" prefHeight="35.0" prefWidth="300.0" promptText="Type your password" style="-fx-background-radius: 50;">
+               <font>
+                  <Font size="18.0" />
+               </font></PasswordField>
+            <Button fx:id="login_button" layoutX="225.0" layoutY="436.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="35.0" prefWidth="150.0" style="-fx-background-radius: 50; -fx-background-color: #9DA896;" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button fx:id="choose_signup" layoutX="300.0" layoutY="24.0" mnemonicParsing="false" onAction="#choseSignUp" prefHeight="35.0" prefWidth="100.0" style="-fx-background-radius: 50; -fx-background-color: #9DA896;" text="Sign Up" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Button layoutX="200.0" layoutY="24.0" mnemonicParsing="false" prefWidth="100.0" style="-fx-background-radius: 50; -fx-background-color: transparent;" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <Text fill="#23321a" layoutX="159.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME BACK">
+               <font>
+                  <Font name="Ebrima Bold" size="36.0" />
+               </font>
+            </Text>
+            <Text fill="#23321a" layoutX="205.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nice to see you again">
+               <font>
+                  <Font name="Ebrima" size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="warning" layoutX="205.0" layoutY="402.0" textFill="#23321a">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Text fill="#23321a" layoutX="162.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+               <font>
+                  <Font name="Ebrima" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#23321a" layoutX="164.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+               <font>
+                  <Font name="Ebrima" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
