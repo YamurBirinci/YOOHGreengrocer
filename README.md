@@ -1,4 +1,5 @@
-#Steps to run the project:
+## Steps to run the project:
+
 This project was run using visual studio code. So these steps apply to vs code:
 -MySQL-connector.jar file has been added to Java Projects' Referenced Libraries.
 -All javafx.jar files have been added to Java Projects' Referenced Libraries.
