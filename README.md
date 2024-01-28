@@ -97,4 +97,10 @@ ____
 Carrier may update its own profile information. In addition, carrier can view all active orders. When a carrier selects and accepts one or more orders among all active orders, those orders appear in the carrier's own 'My Orders' table. If the order is delivered, he/she marks the order as delivered in the My Orders table.
 
 
+________
+
+
+*As a result, the project runs smoothly. However, instead of writing order numbers, the code could have been edited and improved using a more efficient and effective way. In addition, data information pages such as statistics could be added to the carrier and owner interfaces.*
+
+
 
