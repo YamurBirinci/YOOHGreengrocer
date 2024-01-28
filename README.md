@@ -8,4 +8,6 @@ This project was run using visual studio code. So these steps apply to vs code:
 
 -Configuration was added by pressing 'Add Configuration...' from the Run section of VsCode.
 
--Under the 'ProjectName' line in the configuration file, '"vmArgs": "--module-path \"C:/PathOfFiles/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"' added.
+-Under the 'ProjectName' line in the configuration file, 
+'''java
+"vmArgs": "--module-path \"C:/PathOfFiles/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml"''' added.
