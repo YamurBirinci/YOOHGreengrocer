@@ -20,10 +20,7 @@ Under the 'ProjectName' line in the configuration file,
 
 added. 'PathOfFiles' should be changed to the location of the jar file.
 
-____
-____
-____
-____
+_____________
 
 
 ## Project
@@ -35,34 +32,33 @@ ____
 
 When the program is first run, it loads the login screen. The user can log in here or click on the sign up button to load the registration screen.
 
-____
+___
 
 ![2](https://github.com/YamurBirinci/YOOHGreengrocer/assets/99952328/8a6f8156-fc19-488f-849b-9ac5d1aff586)
 
 
 The user can register as a customer by entering his/her information. When registering, the customer must type a strong password and re-enter the password to confirm it. After the registration is successfully confirmed, the customer can log in by returning to the log in page.
 
-____
+___
 
 ![3](https://github.com/YamurBirinci/YOOHGreengrocer/assets/99952328/14efb8a2-b4b8-49d7-84d0-1f84d62fd3b6)
 
 
 After successful login, the homepage page is loaded. Here the user decides whether he/she wants to buy fruits or vegetables. Accordingly, the page is loaded according to the option clicked.
 
-____
+___
 
 ![4](https://github.com/YamurBirinci/YOOHGreengrocer/assets/99952328/ca57d564-31ec-4c21-b559-fb326fabcb55)
 
 
 Customer can access the products from this page. Additionally, they can find the product they want more quickly with the Search button. They can add the products to the cart, but if the amount of product in stock falls below 5kg, they will see the product price double. On the other hand, apart from examining the product, they can view their orders, change their information or log out.
 
-____
+___
 
 ![5](https://github.com/YamurBirinci/YOOHGreengrocer/assets/99952328/8bb5491a-5c49-4a45-884c-2568fb2f609b)
 
 Customer can update the product quantity or remove the product from the cart. To place an order, he/she must select a delivery date from the top right and enter an address and phone number in the MyProfile section.
 
-____
 ____
 
 #### Owner Interface
@@ -71,19 +67,18 @@ ____
 
 Owner logs in from the same log in page. He/she can view the stock and product quantities of all products. In addition, can add new products, update the stock quantity, and update the product price.
 
-____
+___
 
 ![7](https://github.com/YamurBirinci/YOOHGreengrocer/assets/99952328/25aac43e-919e-488c-b2a6-0d901aee3c62)
 
 The owner adds carriers to the system and can view them.
 
-____
+___
 
 ![8](https://github.com/YamurBirinci/YOOHGreengrocer/assets/99952328/78af611b-7a5c-43b3-a4d6-e42bb1d1a026)
 
 When a customer places an order, the owner displays the specified order. When he/she packages the order, enters the order number and changes the order status to 'Prepared'. This way the order can be viewed by carriers.
 
-____
 ____
 
 #### Carrier Interface
