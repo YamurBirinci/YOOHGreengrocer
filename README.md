@@ -20,6 +20,15 @@ Under the 'ProjectName' line in the configuration file,
 
 added. 'PathOfFiles' should be changed to the location of the jar file.
 
+#### 5. Changing MySQL connection and password:
+MySQL localhost and password information for each file in the data folder has changed to our own.
+
+    private static final String JDBC_URL = "jdbc:mysql://localhost:yourNumber/group09";
+    private static final String MYSQL_USERNAME = "yourUsername";
+    private static final String MYSQL_PASSWORD = "yourPassword.";
+
+
+
 _____________
 
 
