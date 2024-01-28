@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="152.0" prefWidth="700.0" style="-fx-background-color: #ECECEC; -fx-background-radius: 12;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.order_card">
+   <children>
+      <HBox prefHeight="71.0" prefWidth="450.0" style="-fx-background-color: #3B542E;">
+         <children>
+            <AnchorPane prefHeight="44.0" prefWidth="701.0">
+               <children>
+                  <Label layoutX="28.0" layoutY="10.0" text="Order Status: " textFill="#cdcdcd">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="order_status" layoutX="135.0" layoutY="13.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <AnchorPane prefHeight="135.0" prefWidth="334.0">
+         <children>
+            <Label layoutX="279.0" layoutY="1.0" text="Order creation time:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="318.0" layoutY="72.0" text="₺" />
+            <Label fx:id="price" layoutX="332.0" layoutY="72.0" text="Label" />
+            <Label fx:id="date" layoutX="279.0" layoutY="27.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
