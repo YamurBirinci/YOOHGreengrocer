@@ -12,9 +12,9 @@ import domain.users;
 
 public class userData {
 
-    private static final String JDBC_URL = "jdbc:mysql://localhost: "MYLOCALHOST"  /group09";
-    private static final String MYSQL_USERNAME = "root";
-    private static final String MYSQL_PASSWORD = ""MYPASSWORD"";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:yourNumber/group09";
+    private static final String MYSQL_USERNAME = "yourUsername";
+    private static final String MYSQL_PASSWORD = "yourPassword.";
 
     private static Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
